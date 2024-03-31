@@ -14,14 +14,25 @@ function Main() {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    
+
     console.log("Haku:", searchTerm);
   };
 
   return (
     <div>
-      <h1>Elokuvasovellus</h1>
-      {/* Mainoslaatikko */}
+      <div className="search-container">
+        <form onSubmit={handleSearchSubmit}>
+          <input
+            type="text"
+            placeholder="Haku..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+          <button type="submit">Hae</button>
+        </form>
+      </div>
+
+      {/* Mainostila */}
       <div className="ad-container">
         <h2>Mainokset</h2>
         <ul>
@@ -30,16 +41,6 @@ function Main() {
           ))}
         </ul>
       </div>
-
-      <form onSubmit={handleSearchSubmit}>
-        <input
-          type="text"
-          placeholder="Haku..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-        <button type="submit">Hae</button>
-      </form>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Main from './components/main'; 
 import NavigationBar from './components/nav';
 import Movies from './components/movies';
@@ -14,8 +14,35 @@ import Groupmanagement from './components/groupmanagement';
 
 
 function App() {
+  const location = useLocation();
+  const getPageTitle = () => {
+    switch (location.pathname) {
+      case '/movies':
+        return 'Elokuvat';
+      case '/teathers':
+        return 'Teatterit';
+      case '/groups':
+        return 'Ryhmät';
+      case '/reviews':
+        return 'Arvostelut';
+      case '/favourites':
+        return 'Suosikit';
+      case '/login':
+        return 'Kirjaudu Sisään';
+      case '/logout':
+        return 'Kirjaudu ulos';
+      case '/profile':
+        return 'Profiili';
+      case '/groupmanagement':
+        return 'Ryhmien hallinta';
+      default:
+        return 'Etusivu';
+    }
+  };
+
   return (
-<div>
+    <div>
+      <h1 className="page-title">{getPageTitle()}</h1>
       <NavigationBar />
       <div className="content">
         <Routes>
