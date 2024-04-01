@@ -4,25 +4,26 @@ import '../App.css';
 
 export default function NavigationBar() {
     return (
+        <div>
         <div className="navigation-bar">
-            <div>
-                <Link to={"/"}><button>Etusivu</button></Link>
-                <Link to={"/movies"}><button>Elokuvat</button></Link>
-                <Link to={"/teathers"}><button>Teatterit</button></Link>
-                <Link to={"/groups"}><button>Ryhmät</button></Link>
-                <Link to={"/reviews"}><button>Arvostelut</button></Link>
-                <Link to={"/favourites"}><button>Suosikit</button></Link>
-                <Link to={"/login"}><button>Kirjaudu Sisään</button></Link>
-
-                <div className="dropdown">
-                    <button className="dropbtn">"dropdownvalikko"</button>
-                    <div className="dropdown-content">
-                        <Link to="/profile">Profiili</Link>
-                        <Link to="/groupmanagement">Ryhmien hallinta</Link>
-                        <Link to="/logout">Kirjaudu ulos</Link>
-                    </div>
-                </div>
+            <div className="nav-links">
+                <Link to={"/"}>Etusivu</Link>
+                <Link to={"/movies"}>Elokuvat</Link>
+                <Link to={"/teathers"}>Teatterit</Link>
+                <Link to={"/groups"}>Ryhmät</Link>
+                <Link to={"/reviews"}>Arvostelut</Link>
+                <Link to={"/favourites"}>Suosikit</Link>
+                <Link to={"/login"}>Kirjaudu Sisään</Link>
             </div>
         </div>
-    );
+        <div className="dropdown">
+            <button className="dropbtn">"dropdownvalikko"</button>
+            <div className="dropdown-content">
+                <Link to="/profile">Profiili</Link>
+                <Link to="/groupmanagement">Ryhmien hallinta</Link>
+                <Link to="/logout">Kirjaudu ulos</Link>
+            </div>
+        </div>
+    </div>
+);
 }
