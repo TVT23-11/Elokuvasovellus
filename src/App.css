@@ -97,7 +97,8 @@ body {
 .navigation-bar a {
   display: inline-block;
   margin-right: 10px;
-  padding: 10px 20px;
+  padding: 10px 0; 
+  width: 120px; 
   background-color: rgb(221, 152, 238);
   color: #333;
   border-radius: 5px;
@@ -108,7 +109,7 @@ body {
 
 .navigation-bar a:hover {
   background-color: rgb(176, 81, 189);
-  /* Vaihda napin taustaväri hiiren ollessa päällä */
+  /* napin taustaväri vaihtuu hiiren ollessa päällä */
 }
 
 /* HAKU LAATIKKO TÄSTÄ*/
