@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 function Main() {
   const [searchTerm, setSearchTerm] = useState('');
   // Staattinen lista mainoksista tilalle, kunnes saadaan API-avain
