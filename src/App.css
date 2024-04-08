@@ -145,6 +145,23 @@ body {
   background-color: rgb(176, 81, 189);
 }
 
+.movie-container {
+  text-align: center;
+}
+
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie-item {
+  margin: 10px;
+}
+
+.movie-item img {
+  width: 150px;
+  height: auto;
 /* GROUP VÄLILEHDEN RYHMÄT*/
 .group-name {
   font-size: 20px;
