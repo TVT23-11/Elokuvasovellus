@@ -47,6 +47,17 @@ function Movies() {
     fetchMovies();
   }, []);
 
+  const finnkinoHaku = () => {
+    fetch('https://www.finnkino.fi/xml/Schedule/?area=1033&dt=02.04.2024')
+    .then(response => response.text())
+    .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+    .then(data => processData(data));
+  }
+
+  const processData = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="movie-container">
       <h1>Tänään näytettävät elokuvat:</h1>
@@ -58,6 +69,7 @@ function Movies() {
           </div>
         ))}
       </div>
+      <button onClick={finnkinoHaku}>Finnkino haku</button>
     </div>
   );
 }
