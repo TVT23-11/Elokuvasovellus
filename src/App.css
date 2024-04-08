@@ -162,7 +162,9 @@ body {
 .movie-item img {
   width: 150px;
   height: auto;
+}
 /* GROUP VÄLILEHDEN RYHMÄT*/
+
 .group-name {
   font-size: 20px;
   font-weight: bold;
