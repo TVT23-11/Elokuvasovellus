@@ -252,3 +252,13 @@ body {
 }
 
 
+/*React Link -elementtie tyyli*/
+.link {
+  color:white;
+}
+.link:visited {
+  color:white;
+}
+.link:hover {
+  cursor:pointer;
+}
