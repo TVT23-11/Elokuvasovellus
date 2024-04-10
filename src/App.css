@@ -205,3 +205,14 @@ body {
   max-width: 800px;
   margin: 0 auto;
 }
+
+/*React Link -elementtie tyyli*/
+.link {
+  color:white;
+}
+.link:visited {
+  color:white;
+}
+.link:hover {
+  cursor:pointer;
+}
