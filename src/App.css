@@ -186,3 +186,93 @@ body {
   max-width: 800px;
   margin: 0 auto;
 }
+
+/*REPONSIIVISUUS:*/
+/*1200-922px NÄYTTÖ:*/
+@media screen and (max-width: 1200px){
+  body {
+
+    font-size: 1em;
+    padding: 20px;
+    margin: 20px;
+
+    .App-header {
+
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: calc(10px + 2vmin);
+      text-align: center;
+    }
+    }
+
+  /* NAVIGATION-BAR RESPONSIIVISUUS:*/
+    .navigation-bar a {
+      display: inline-block;
+      margin: 10px;
+      margin-right: 10px;
+      padding: 10px 5px; 
+      width: 120px; 
+      border-radius: 3px;
+      border-end-end-radius: 3px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      outline: none;
+    }
+   }
+    
+
+  /*800px TAI SITÄ PIENEMPI NÄYTTÖ*/
+@media screen and (max-width: 800px){
+  body {
+    font-size: 0,6em;
+    }
+   
+  /*PUDOTUSVALIKON RESPONSIIVISUUS:*/
+    .dropdown {
+      position: absolute;
+      top: 15px;
+      right: 10px;
+    }
+    
+    .dropbtn {
+      padding: 6px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      min-width: 126px;
+      z-index: 1;
+      margin-top: 2px;
+      margin-right: 10px;
+      border-radius: 5px;
+    }
+    
+    .dropdown-content a {
+      padding: 7px 7px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {
+      border-radius: 5px;
+    }
+     /* NAVIGATION-BAR RESPONSIIVISUUS:*/
+    .navigation-bar a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 3px; 
+      width: 120px; 
+      border-width: 3px;
+        
+    }
+
+}
+
