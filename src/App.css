@@ -145,7 +145,34 @@ body {
   background-color: rgb(176, 81, 189);
 }
 
+.movie-container {
+  text-align: center;
+}
+
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px; /* Säädä haluamasi välimatka yläpuolelle */
+}
+
+.movie-item {
+  margin: 10px;
+  padding: 20px; /* Säädä haluamasi välimatka elokuvien välille */
+  text-align: center; /* Aseta elokuvat keskelle */
+}
+
+.movie-item img {
+  width: 150px;
+  height: auto;
+}
+
+.movie-title {
+  display: block; /* Varusta span-elementti lohkoiksi, jotta elokuvien nimet menevät alas päin */
+  margin-top: 10px; /* Aseta välimatka kuvan ja nimen välille */
+}
 /* GROUP VÄLILEHDEN RYHMÄT*/
+
 .group-name {
   font-size: 20px;
   font-weight: bold;
@@ -188,7 +215,7 @@ body {
 }
 
 /*REPONSIIVISUUS:*/
-/*1200-922px NÄYTTÖ:*/
+/*1200-800px NÄYTTÖ:*/
 @media screen and (max-width: 1200px){
   body {
 
@@ -275,4 +302,5 @@ body {
     }
 
 }
+
 
