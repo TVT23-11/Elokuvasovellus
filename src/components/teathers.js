@@ -96,7 +96,6 @@ function Theaters() {
     }
   }, [movies]);
 
-
   return (
     <div>
       <h1>Kaikki teatterit</h1>
