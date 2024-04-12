@@ -303,4 +303,51 @@ body {
 
 }
 
+/* MOVIES VÄLILEHDEN SUODATUS VALIKKO*/
 
+.filter-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 600px;
+  margin-top: -20px;
+}
+
+.filter-container select {
+  background-color: rgb(221, 152, 238);
+  color: rgb(2, 2, 2);
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  appearance: none; /* Poistaa oletustyylin */
+}
+
+.filter-container select:focus {
+  outline: none; /* Poistaa focus-kehyksen */
+}
+
+.filter-container select option {
+  background-color: white;
+  color: black;
+}
+
+.filter-container select:hover {
+  background-color: rgb(176, 81, 189);
+}
+
+.filter-container select:focus {
+  background-color: rgb(176, 81, 189);
+}
+
+
+/*React Link -elementtie tyyli*/
+.link {
+  color:white;
+}
+.link:visited {
+  color:white;
+}
+.link:hover {
+  cursor:pointer;
+}
