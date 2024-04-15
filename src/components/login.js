@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom' 
+import { jwtToken } from './authSignals';
 
 const kirjauduSisaan = () => {
     let username = document.getElementById('loginFormUsername').value;
@@ -15,12 +16,16 @@ const kirjauduSisaan = () => {
         headers: {'Content-type': 'application/json'},
         body: JSON.stringify(data)
     };
+    console.log(requestOptions);
     fetch('http://localhost:3001/user/login', requestOptions)
         .then(response => response.json())
         .then(data => {
             console.log(data);
             if(data == 'wrong password'){
                 document.getElementById('loginFormInfo').innerHTML = '<p>Virheellinen käyttäjätunnus tai salasana</p>';
+            }
+            else{
+                jwtToken.value = data.jwtToken; //Asetetaan jwt token signalin kautta session storageen
             }
         })
         .catch(error => {
