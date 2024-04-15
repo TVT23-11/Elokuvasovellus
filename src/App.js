@@ -12,6 +12,7 @@ import Logout from './components/logout';
 import Profile from './components/profile';
 import Groupmanagement from './components/groupmanagement';
 import Register from './components/register';
+import Search from './components/search';
 
 
 function App() {
@@ -38,6 +39,8 @@ function App() {
         return 'Ryhmien hallinta';
       case '/register':
         return 'Luo tili';
+        case '/search':
+          return 'search';
       default:
         return 'Etusivu';
     }
@@ -60,6 +63,7 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/groupmanagement' element={<Groupmanagement/>} />
           <Route path='/register' element={<Register />} />
+          <Route path='/search' element={<Search />} />
         </Routes>
       </div>
     </div>

@@ -144,6 +144,7 @@ body {
 .search-container button:focus {
   background-color: rgb(176, 81, 189);
 }
+/* MOVIE VÄLILEHDEN HOMMELIT*/
 
 .movie-container {
   text-align: center;
@@ -153,13 +154,13 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 20px; /* Säädä haluamasi välimatka yläpuolelle */
+  margin-top: 20px; 
 }
 
 .movie-item {
   margin: 10px;
-  padding: 20px; /* Säädä haluamasi välimatka elokuvien välille */
-  text-align: center; /* Aseta elokuvat keskelle */
+  padding: 20px; 
+  text-align: center; 
 }
 
 .movie-item img {
@@ -168,8 +169,8 @@ body {
 }
 
 .movie-title {
-  display: block; /* Varusta span-elementti lohkoiksi, jotta elokuvien nimet menevät alas päin */
-  margin-top: 10px; /* Aseta välimatka kuvan ja nimen välille */
+  display: block; 
+  margin-top: 10px; 
 }
 /* GROUP VÄLILEHDEN RYHMÄT*/
 
@@ -320,11 +321,11 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  appearance: none; /* Poistaa oletustyylin */
+  appearance: none; 
 }
 
 .filter-container select:focus {
-  outline: none; /* Poistaa focus-kehyksen */
+  outline: none; 
 }
 
 .filter-container select option {
@@ -351,3 +352,4 @@ body {
 .link:hover {
   cursor:pointer;
 }
+
