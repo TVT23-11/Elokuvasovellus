@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom' 
 import { jwtToken } from './authSignals';
 
+
 const kirjauduSisaan = () => {
     let username = document.getElementById('loginFormUsername').value;
     let password = document.getElementById('loginFormPassword').value;
