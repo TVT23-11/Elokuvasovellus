@@ -11,6 +11,7 @@ function Theaters() {
   // Tilamuuttujat teattereille, valitulle teatterille, elokuville, valitulle esitysajalle ja esitysajoille
   const [theaters, setTheaters] = useState([]);
   const [selectedTheater, setSelectedTheater] = useState("");
+  const [selectedTheaterName, setSelectedTheaterName] = useState(""); // Tallennetaan valitun teatterin nimi
   const [movies, setMovies] = useState([]); // Elokuvat
   const [selectedShowtime, setSelectedShowtime] = useState("");
   const [showtimes, setShowtimes] = useState([]);
@@ -82,6 +83,9 @@ function Theaters() {
   const handleChangeTheater = (event) => {
     setSelectedTheater(event.target.value);
     setSelectedShowtime("");
+    // Asetetaan valitun teatterin nimi
+    const selectedTheaterObject = theaters.find(theater => theater.id === event.target.value);
+    setSelectedTheaterName(selectedTheaterObject ? selectedTheaterObject.name : "");
   };
 
   const handleChangeShowtime = (event) => {
@@ -99,24 +103,38 @@ function Theaters() {
   return (
     <div>
       <h1>Kaikki teatterit</h1>
-      <select value={selectedTheater} onChange={handleChangeTheater}>
-        <option value="">Valitse teatteri</option>
-        {theaters.map(theater => (
-          <option key={theater.id} value={theater.id}>{theater.name}</option>
-        ))}
-      </select>
+      <div className="custom-dropdown">
+        <button className="custom-dropdown-btn">Valitse teatteri</button>
+        <div className="custom-dropdown-content">
+          {theaters.map(theater => (
+            <a key={theater.id} href="#" onClick={() => handleChangeTheater({target: {value: theater.id}})}>{theater.name}</a>
+          ))}
+        </div>
+      </div>
+      {/* Tulostetaan valittu teatteri */}
+      {selectedTheaterName && (
+        <div className="selected-theater">
+          {[...Array(100)].map((_, index) => (
+            <span key={index}>{selectedTheaterName} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          ))}
+        </div>
+      )}
       {movies.length > 0 && (
-  <div className="movie-grid">
-    {movies.map((movie, index) => (
-      <div className="movie-item" key={index}>
-        <img src={movie.image} alt={movie.title} />
-        <span className="movie-title">{movie.title}</span>
-        <select onChange={handleChangeShowtime}>
-          <option value="">Valitse esitysaika</option>
-          {movie.showtimes && movie.showtimes.map((showtime, index) => (
-            <option key={index} value={showtime}>{showtime.substring(11, 16)}</option>
-                ))}
-              </select>
+        <div className="movie-grids">
+          {movies.map((movie, index) => (
+            <div className="movie-items" key={index}>
+              <div className="movie-details">
+                <span className="movie-title">{movie.title}</span>
+                <img src={movie.image} alt={movie.title} />
+              </div>
+              <div className="showtimes">
+                <h3>Esitysajat</h3>
+                <ul>
+                  {movie.showtimes && movie.showtimes.map((showtime, index) => (
+                    <li key={index}>{showtime.substring(11, 16)}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>
