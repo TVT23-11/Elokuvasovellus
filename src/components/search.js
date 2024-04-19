@@ -67,7 +67,12 @@ export default function Search() {
                     let genreid = parseInt(document.getElementById('Genredropdown').value);
                     if (movie.genre_ids.indexOf(genreid) > -1 || genreid == 0) {
                         let movieElement = '<div class="movie-item" >';
-                        movieElement += `<img src='https://image.tmdb.org/t/p/original${movie.poster_path}' alt='Poster for ${movie.original_title}' />`;
+                        if (movie.poster_path) {
+                            movieElement += `<img src='https://image.tmdb.org/t/p/original${movie.poster_path}' alt='Poster for ${movie.original_title}' />`;
+                        } else {
+                            
+                            movieElement += `<img src= '/img/noposter.jpg' alt='Oletuskuva' />`
+                        }
                         movieElement += `<div>${movie.original_title}</div>`;
                         movieElement += `</div>`;
                         moviegrid.innerHTML += movieElement;
