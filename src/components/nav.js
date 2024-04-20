@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LogoutButton from './logout';
 
-
-
 export default function NavigationBar({ isAuthenticated, setIsAuthenticated }) {
   const handleLogout = () => {
     setIsAuthenticated(false); // Asetetaan käyttäjän kirjautumistila pois päältä
