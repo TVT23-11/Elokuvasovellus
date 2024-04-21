@@ -74,7 +74,7 @@ class RegisterButton extends React.Component {
     };
     render() {
       return (
-        <button onClick={this.handleClick}>
+        <button className="register-button" onClick={this.handleClick}>
           Luo tili
         </button>
       );
@@ -140,9 +140,10 @@ const checkPassword = () => {
 export default function () {
   return (
     <div>
-      <h1>Käyttäjätilin luonti</h1>
+      
       <div id='registerFormInfo'></div>
       <div className="registerFormContainer">
+      <h2 className="loginTitle">Tervetuloa! Luo käyttäjätunnuksesi.</h2>
         <table className="registerFormTable">
           <tbody>
             <tr>
@@ -163,7 +164,7 @@ export default function () {
             </tr>
             <tr>
               <td></td>
-              <td>{<RegisterButton />}</td>
+              <td>{<RegisterButton  className="register-button" />}  </td> 
             </tr>
           </tbody>
         </table>

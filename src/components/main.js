@@ -1,13 +1,38 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 
 function Main() {
   const [searchTerm, setSearchTerm] = useState('');
-  // Staattinen lista mainoksista tilalle, kunnes saadaan API-avain
-  const staticAds = ["Mainostaulukko"];
+  const [ads, setAds] = useState([]);
+  const [index, setIndex] = useState(0);
 
-  //Tähän tehdään API-kutsu mainosten hakemiseksi
+  useEffect(() => {
+    const fetchAds = async () => {
+      try {
+        const response = await fetch('https://www.finnkino.fi/xml/News/');
+        const data = await response.text();
+        const parser = new window.DOMParser();
+        const xmlData = parser.parseFromString(data, 'text/xml');
+        const adNodes = xmlData.querySelectorAll('NewsArticle');
+        const adsData = Array.from(adNodes).map(adNode => ({
+          title: adNode.querySelector('Title')?.textContent || '',
+          lead: adNode.querySelector('HTMLLead')?.textContent || '',
+          imageUrl: adNode.querySelector('ImageURL')?.textContent || '',
+        }));
+        console.log('Mainokset:', adsData);
+        setAds(adsData);
+      } catch (error) {
+        console.error('Virhe mainosten haussa:', error);
+      }
+    };
+    fetchAds();
+  }, []);
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setIndex(prevIndex => (prevIndex + 1) % ads.length);
+    }, 5000); // Vaihda mainosta joka 5 sekunti
+    return () => clearInterval(intervalId); // Puhdista intervali komponentin purkamisen yhteydessä
+  }, [ads]); // Riippuvuus ads-taulukosta
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -15,7 +40,6 @@ function Main() {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-
     console.log("Haku:", searchTerm);
   };
 
@@ -33,14 +57,16 @@ function Main() {
         </form>
       </div>
 
-      {/* Mainostila */}
       <div className="ad-container">
-        <h2>Mainokset</h2>
-        <ul>
-          {staticAds.map((ad, index) => (
-            <li key={index}>{ad}</li>
-          ))}
-        </ul>
+        <div className="ad-item">
+          {ads.length > 0 && (
+            <div className="ad-content">
+              <img className="ad-image" src={ads[index].imageUrl} alt={ads[index].title} />
+              <p>{ads[index].title}</p>
+              <p>{ads[index].lead}</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

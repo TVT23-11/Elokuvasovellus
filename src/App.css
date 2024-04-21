@@ -24,6 +24,58 @@ body {
   text-align: center;
 }
 
+/* ETUSIVUN MAINOSLAATIKKO*/
+
+.ad-container-wrapper {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  overflow: hidden;
+}
+
+.ad-container {
+  width: 30%;
+  height: 60%;
+  position: absolute;
+  left: 20px;
+  top: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3f0f41;  
+  border: 1px solid #ccc;
+}
+
+.ad-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.ad-item {
+  width: 800px; 
+  height: 500px; 
+  position: relative;
+}
+
+
+.ad-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.ad-content {
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  text-align: center; 
+  color: white; 
+}
+
+
 /* DROPDOWN VALIKKO TÄSTÄ*/
 .dropdown {
   position: absolute; 
@@ -383,7 +435,7 @@ body {
 .movie-grids {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Lisätty 10 pikselin välimatka korttien välille */
+  gap: 20px; 
   justify-content: center;
 }
 
@@ -392,9 +444,9 @@ body {
   align-items: flex-start;
   margin-bottom: 20px;
   border: 1px solid #ccc;
-  border-radius: 8px; /* Lisätty pehmeäkulmaiset reunat */
+  border-radius: 8px; 
   padding: 10px;
-  background-color: #550343; /* Lisätty taustaväri */
+  background-color: #550343; 
 }
 
 .movie-details {
@@ -496,4 +548,90 @@ body {
 .selected-theater span {
   display: inline-block;
   animation: carousel 30s linear infinite; 
+}
+
+/* LOGIN SIVUSTO */
+.login-container {
+  width: 35%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3f0f41; 
+  border-radius: 20px; 
+  border: 1px solid #ccc;
+}
+
+.login-input {
+  margin-bottom: 10px;
+  padding: 10px;
+  margin-right: 80px;
+  border-radius: 5px;
+  width: 180px;
+}
+
+.loginPage-button {
+  color: black;
+  font-size: 16px;
+  padding: 10px 12px;
+  background-color: rgb(221, 152, 238);
+  border-radius: 5px;
+}
+
+.link {
+  position: absolute;
+  bottom: 100px;
+  
+}
+
+.loginTitle {
+  position: absolute;
+  top: 10px; 
+  transform: translateX(-50%);
+  left: 60%;
+  width: 80%;
+}
+
+/* REGISTER SIVUSTO */
+
+.registerFormContainer {
+  width: 35%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3f0f41; 
+  border-radius: 20px; 
+  border: 1px solid #ccc;
+}
+
+.registerFormTable td input[type="text"],
+.registerFormTable td input[type="password"] {
+  width: 180px; 
+  padding: 10px; 
+  margin-bottom: 10px; 
+  margin-right: 20px; 
+  border-radius: 5px; 
+ 
+}
+
+.validationStatus {
+  margin-left: 20px; 
+  font-size: 12px; 
+}
+
+.register-button {
+  color: black;
+  font-size: 16px;
+  padding: 10px 12px;
+  background-color: rgb(221, 152, 238);
+  border-radius: 5px;
 }

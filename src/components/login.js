@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom' 
+import { Link, useHistory } from 'react-router-dom' 
 import { jwtToken } from './authSignals';
 
 
 const kirjauduSisaan = () => {
     let username = document.getElementById('loginFormUsername').value;
     let password = document.getElementById('loginFormPassword').value;
+    
 
     const data = {
         username: username,
@@ -27,6 +28,7 @@ const kirjauduSisaan = () => {
             }
             else{
                 jwtToken.value = data.jwtToken; //Asetetaan jwt token signalin kautta session storageen
+                window.location.href = '/';
             }
         })
         .catch(error => {
@@ -36,28 +38,30 @@ const kirjauduSisaan = () => {
 
 export default function login() {
     return (
-        <div>
-            <h1>Tähän tulee login välilehti</h1>
+        <div className="login-container">
+              
+            <h2 className="loginTitle">Tervetuloa! Kirjaudu sisään tunnuksillasi.</h2>
             <div id='loginFormInfo'></div>
             <table>
                 <tbody>
                     <tr>
                         <td><label>Käyttäjätunnus:</label></td>
-                        <td><input type='text' id='loginFormUsername' /></td>
+                        <td><input type='text' id='loginFormUsername' className='login-input' /></td>
                     </tr>
                     <tr>
                         <td><label>Salasana:</label></td>
-                        <td><input type='password' id='loginFormPassword' /></td>
+                        <td><input type='password' id='loginFormPassword' className='login-input' /></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><button id='loginButton' onClick={kirjauduSisaan}>Kirjaudu sisään</button></td>
+                        <td><button id='loginButton' onClick={kirjauduSisaan} className='loginPage-button'>Kirjaudu sisään</button></td>
                     </tr>
                 </tbody>
             </table>
             <Link to={"../register"} className='link'>
                 Luo uusi käyttäjätunnus
             </Link>
+            
         </div>
     )
 }
