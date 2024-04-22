@@ -80,9 +80,9 @@ export default function Search() {
 
                 });
             })
-            .catch(error => {
-                setError('Hakuvirhe: ' + error.message);
-            });
+           // .catch(error => {
+               // setError('Hakuvirhe: ' + error.message);
+           // });
     };
 
     return (
