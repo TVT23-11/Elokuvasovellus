@@ -635,3 +635,96 @@ body {
   background-color: rgb(221, 152, 238);
   border-radius: 5px;
 }
+
+/* PROFIILIN HALLINTA */
+.account-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px; 
+  height: 300px; 
+  background-color: #3f0f41; 
+  padding: 30px;
+  border: 1px solid #ccc;
+  margin-left: 200px;
+  margin-top: 50px;
+}
+
+.delete-account-button {
+  color: black;
+  font-size: 16px;
+  padding: 10px 12px;
+  background-color: rgb(221, 152, 238);
+  border-radius: 5px;
+  margin-top: auto;
+}
+
+/* GROUP MANAGEMENT SIVUSTO*/
+
+.groupManagementContainer {
+  margin-bottom: 20px;
+}
+
+.formButton {
+  color: black;
+  font-size: 16px;
+  padding: 10px 12px;
+  background-color: rgb(221, 152, 238);
+  border-radius: 5px;
+  margin-top: auto;
+  margin-left: 250px;
+  margin-top: 30px;
+  
+}
+
+.formButton:hover {
+  background-color: rgb(176, 81, 189); 
+}
+
+.newGroupFormContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%; 
+  height: 20%; 
+  background-color: #3f0f41; 
+  padding: 30px;
+  border: 1px solid #ccc;
+  margin-left: 10px;
+  margin-top: 50px;
+}
+
+#newGroupForm_infoLine {
+  margin-bottom: 10px;
+}
+
+.newGroupFormContainer table {
+  width: 100%;
+}
+
+.newGroupFormContainer td {
+  padding: 5px;
+}
+
+.newGroupFormContainer input[type='text'],
+.newGroupFormContainer textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+
+#newGroupForm_addNewGroup {
+  background-color: rgb(221, 152, 238);
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#newGroupForm_addNewGroup:hover {
+  background-color: rgb(176, 81, 189); 
+}
