@@ -60,13 +60,14 @@ export default function gropupmanagement() {
 
   return (
     <div>
-      <h1>Tähän tulee ryhmien hallinta sivusto</h1>
+      
       {!isLoggedIn() ? (
            <p>Tämä sivu näkyy vain kirjautuneille käyttäjille. <Link to="/login" className="login-button">Kirjaudu Sisään</Link></p>
         ) : (
         <div className='groupManagementContainer'>
           <button className='formButton' onClick={showNewGroupForm}>Luo uusi ryhmä</button>
           <div className="newGroupFormContainer" id="newGroupFormContainer" style={{display:'none'}}>
+          <h3>Syötä ryhmän tiedot:</h3>
             <div id='newGroupForm_infoLine'>&nbsp;</div>
             <table>
               <tbody>
