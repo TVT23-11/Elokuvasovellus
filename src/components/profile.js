@@ -5,16 +5,22 @@ const DeleteAccountButton = () => {
   const navigate = useNavigate();
 
   const handleDeleteAccount = () => {
-    const token = sessionStorage.getItem('token'); //Haetaan tokeni sessionStoragesta. 
-    
-    // Tehdään DELETE-pyyntö käyttäen tokenia
-    fetch('http://localhost:3001/user/?id=' + token, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
-    })
+    // Näytetään vahvistusikkuna ja tallennetaan tulos
+    const confirmDelete = window.confirm('Oletko varma että haluat poistaa käyttäjän?');
+
+    // Jos käyttäjä vahvistaa poiston
+    if (confirmDelete) {
+      const token = sessionStorage.getItem('token'); 
+
+      // Tehdään DELETE-pyyntö käyttäen tokenia
+      fetch('http://localhost:3001/user/?id=' + token, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      })
+
       .then(response => {
         if (response.ok) {
           console.log('Käyttäjätili poistettu onnistuneesti');
@@ -28,10 +34,12 @@ const DeleteAccountButton = () => {
       .catch(error => {
         console.error('Virhe käyttäjätilin poistamisessa:', error);
       });
-  };
+    }
+    };
+
 
   return (
-    <div>
+    <div className="account-container">
       <button className="delete-account-button" onClick={handleDeleteAccount}>Poista käyttäjätili</button>
     </div>
   );
