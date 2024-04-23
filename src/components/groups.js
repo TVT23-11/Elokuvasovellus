@@ -31,9 +31,13 @@ export default function Groups() {
   }
 
   const [groups, setGroups] = useState([]);
+  let token = '';
+  if(jwtToken.value.length > 1){
+    token = jwtToken.value;
+  }
 
   useEffect(() => {
-    fetch('http://localhost:3001/groups/All/' + jwtToken.value)
+    fetch('http://localhost:3001/groups/All/' + token)
       .then(response => response.json())
       .then(data => setGroups(data))
       .catch(error => console.error('Error fetching groups:', error));

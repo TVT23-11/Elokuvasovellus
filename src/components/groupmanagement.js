@@ -115,7 +115,7 @@ function PendingJoinRequests() {
     return (
       <div className='joinRequestContainer'><p>Hyväksy käyttäjiä ryhmiisi:</p>
         {requestArray.map((group) =>
-
+          
           <div className='acceptRequestsGroup' key={group.key}><div className='acceptJoinRequestGroupName'>{group.groupname}</div>
 
             {group.users.map((user) =>
@@ -142,6 +142,7 @@ export default function gropupmanagement() {
         <div className='groupManagementContainer'>
           <button className='formButton' onClick={showNewGroupForm}>Luo uusi ryhmä</button>
           <div className="newGroupFormContainer" id="newGroupFormContainer" style={{ display: 'none' }}>
+            <div className='newGroupFormHeader'>Anna uuden ryhmän tiedot:</div>
             <div id='newGroupForm_infoLine'>&nbsp;</div>
             <table>
               <tbody>
