@@ -135,7 +135,7 @@ function PendingJoinRequests() {
 export default function gropupmanagement() {
   return (
     <div>
-      <h1>Tähän tulee ryhmien hallinta sivusto</h1>
+      
       {!isLoggedIn() ? (
         <p>Tämä sivu näkyy vain kirjautuneille käyttäjille. <Link to="/login" className="login-button">Kirjaudu Sisään</Link></p>
       ) : (
