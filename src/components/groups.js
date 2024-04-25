@@ -150,7 +150,12 @@ function GroupPage(){
             <div>Lista on tyhjä</div>
           ) : (
             (groupShowList.map((show) =>
-              <div className='groupShowListItem' key={`show${show.id}`}>{show.id}</div>
+              <div className='groupShowListItem' key={`show${show.id}`}>
+                <div className='groupShowListMovie'>{show.moviename}</div>
+                <div className='groupShowListTheater'>{show.theater}</div>
+                <div className='groupShowListShowtime'>{show.showtime}</div>
+                <img src={show.poster} alt={`Elokuvan ${show.moviename} kuva`} />
+              </div>
             ))
           )}
         </div>
