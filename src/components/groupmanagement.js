@@ -38,6 +38,27 @@ const AcceptUserToGroup = (user, group) => {
     });
 };
 
+const DenyUserToGroup = (user, group) => {
+
+  const requestOptions = {
+    method: 'delete',
+    headers: { 'Content-type': 'application/json' }
+  };
+  console.log(requestOptions);
+  fetch(`http://localhost:3001/groups/denyRequestToJoin/${user}/${group}`, requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.message);
+      if(data.message == 'success'){
+        console.log('Käyttäjän hakemus hylätty');
+        document.getElementById('acceptMember_'+user+'-'+group).innerHTML = '<div class="acceptedToGroup">Hylätty</div>';
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+};
+
 function isLoggedIn() {
   if (jwtToken.value == '') {
     return false;
@@ -116,11 +137,16 @@ function PendingJoinRequests() {
       <div className='joinRequestContainer'><p>Hyväksy käyttäjiä ryhmiisi:</p>
         {requestArray.map((group) =>
           
-          <div className='acceptRequestsGroup' key={group.key}><div className='acceptJoinRequestGroupName'>{group.groupname}</div>
+          <div className='acceptRequestsGroup' key={`acceptRequest${group.key}`}><div className='acceptJoinRequestGroupName'>{group.groupname}</div>
 
             {group.users.map((user) =>
               <div className='acceptUserToGroup'>
-                <p>{user.username}</p><div id={`acceptMember_${+user.iduser+'-'+group.idgroup}`}><button className='acceptUserToGroup' onClick={() => AcceptUserToGroup(user.iduser, group.idgroup)}>Hyväksy</button></div>
+                <p>{user.username}</p>
+                <div key={`acceptMember_${+user.iduser+'-'+group.idgroup}`} className='joinRequestButtonContainer'>
+                  <button className='acceptUserToGroup' onClick={() => AcceptUserToGroup(user.iduser, group.idgroup)}>Hyväksy</button>
+                  <button className='denyUserToGroup' onClick={() => DenyUserToGroup(user.iduser, group.idgroup)}>Hylkää</button>
+                </div>
+                
               </div>
             )}
 
@@ -131,6 +157,58 @@ function PendingJoinRequests() {
   }
 
 };
+
+function ManageGroups(){
+  const [adminGroups, setAdminGroups] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/groups/isAdmin/' + jwtToken.value)
+      .then(response => response.json())
+      .then(data => setAdminGroups(data))
+      .catch(error => console.error('Error fetching groups:', error));
+
+  }, []);
+
+  const deleteGroup = (id, name) => {
+    if (window.confirm(`Poistetaanko ryhmä ${name}?`)) {
+      console.log('Poistetaan ryhmä ' + id);
+
+      const requestOptions = {
+        method: 'delete',
+        headers: { 'Content-type': 'application/json' }
+      };
+      console.log(requestOptions);
+      fetch(`http://localhost:3001/groups/deleteGroup/${id}`, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data.message);
+          if (data.message == 'success') {
+            console.log(`Ryhmä ${name} poistettu onnistuneesti`);
+            console.log('manageGroup_' + id);
+            const ele = document.getElementById('manageGroup_' + id);
+            ele.remove();
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  };
+
+
+  return(
+    <div className='manageGroupsContainer'>
+      <div className='manageGroupsHeader'>Hallinnoi ryhmiä:</div>
+      {adminGroups.map((adminGroup) =>
+        <div className='manageGroup' id={`manageGroup_${adminGroup.id}`} key={`cont${adminGroup.name}`}>
+          <div className='manageGroupName' key={adminGroup.name}>{adminGroup.name}</div>
+          <button className='button' onClick={() => deleteGroup(adminGroup.id, adminGroup.name)}>Poista ryhmä</button>
+        </div>
+      )}
+    </div>
+  );
+  
+}
 
 export default function gropupmanagement() {
   return (
@@ -163,6 +241,7 @@ export default function gropupmanagement() {
             <button id='closeNewGroupForm' className='closeButton' onClick={closeNewGroupForm}>Sulje lomake</button>
           </div>
           <PendingJoinRequests />
+          <ManageGroups />
         </div>
       )}
     </div>
