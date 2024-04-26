@@ -73,7 +73,7 @@ const ProfileManagement = () => {
   return (
     <div className="profile-management">
       <div className="email-change-container">
-        <h2>Vaihda sähköposti</h2>
+        <h3>Vaihda sähköposti</h3>
         <form onSubmit={handleSubmit}>
           <input
             type="email"
@@ -86,7 +86,7 @@ const ProfileManagement = () => {
         </form>
       </div>
       <div className="account-container">
-        <h2>Poista käyttäjätili</h2>
+        <h3>Poista käyttäjätili</h3>
         <button className="delete-account-button" onClick={handleDeleteAccount}>Poista käyttäjätili</button>
       </div>
     </div>
