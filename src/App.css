@@ -221,7 +221,6 @@ body {
 }
 
 
-
 /* LOGIN BUTTON*/
 .login-button{
   position: absolute; 
@@ -713,28 +712,68 @@ body {
 }
 
 /* PROFIILIN HALLINTA */
-.account-container {
+
+.profile-management {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  margin-top: 100px;
+}
+
+.container-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 200px; 
-  height: 300px; 
+  align-items: center; 
+}
+
+.email-change-container,
+.account-container {
+  width: 700px; 
   background-color: #3f0f41; 
   padding: 30px;
   border: 1px solid #ccc;
-  margin-left: 200px;
-  margin-top: 50px;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 20px; 
 }
 
-.delete-account-button {
-  color: black;
-  font-size: 16px;
-  padding: 10px 12px;
-  background-color: rgb(221, 152, 238);
-  border-radius: 5px;
-  margin-top: auto;
+.email-change-container h1 {
+  margin-right: 20px;
 }
+
+.email-change-container form,
+.account-container {
+  display: flex; 
+  flex-direction: row; 
+  align-items: center; 
+}
+
+.email-change-container input[type="email"] {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.email-change-container button[type="submit"],
+.delete-account-button {
+  padding: 10px 20px;
+  background-color: rgb(221, 152, 238);
+  color: #050505;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 40px;
+}
+
+.email-change-container button[type="submit"]:hover,
+.delete-account-button:hover {
+  background-color: rgb(176, 81, 189); /* Uusi taustaväri hover-tilassa */
+}
+
+
 
 /* GROUP MANAGEMENT SIVUSTO*/
 
