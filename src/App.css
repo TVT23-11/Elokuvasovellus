@@ -328,16 +328,29 @@ body {
 }
 /* GROUP VÄLILEHDEN RYHMÄT*/
 
+.groups-container {
+  margin: 20px auto;
+  max-width: 800px;
+  margin: 0 auto;
+  
+}
+
+.group-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
 .group-name {
   font-size: 20px;
   font-weight: bold;
   color: #ffffff;
-  text-align: center;
 }
 
 
 .group-description {
-  margin-top: 5px;
+  margin-top: 25px;
   color: #ffffff;
   text-align: center;
   overflow: hidden; 
@@ -345,6 +358,9 @@ body {
   white-space: pre-line; 
   max-height: clamp(40px, 100%, 40px); 
   word-wrap: break-word; 
+  overflow-y: auto;
+  max-height: 100px;
+  max-width: 90%;
 }
 
 
@@ -352,22 +368,43 @@ body {
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 10px;
-  border-radius: 10px;
-  margin-top: 20px;
+  margin-top: 30px;
   width: 100%;
   display: flex; 
   flex-direction: column; 
   align-items: center; 
-  height: 120px;
-  background-color: rgba(48, 16, 78, 0.952);
+  height: 150px;
+  background-color: #3f0f41;
+  position: relative;
+  overflow-y: auto;
 }
 
-
-.groups-container {
-  margin: 20px auto;
-  max-width: 800px;
-  margin: 0 auto;
+.groupMemberStatus {
+  position: absolute; 
+  top: 10px; 
+  right: 10px; 
 }
+
+.button {
+  padding: 10px 20px;
+  background-color: rgb(221, 152, 238);
+  color: #050505;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+/* Lisätään hover-efekti napille */
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Lisätään tyyliä ryhmän jäsenyyden tilalle */
+.groupMembershipStatus {
+  color: #4eda2c;
+}
+
 
 /*REPONSIIVISUUS:*/
 /*1200-800px NÄYTTÖ:*/
