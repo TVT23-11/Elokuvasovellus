@@ -118,6 +118,7 @@ export default function Search() {
     return (
         <div>
             <form onSubmit={handleSearch} className="search-container">
+            <div className="search-input-container">
                 <input
                     type="text"
                     id="searchField"
@@ -125,6 +126,9 @@ export default function Search() {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="search-input"
                 />
+                <button type="submit" className="search-button">Search</button>
+                </div>
+                <div className="dropdowns-container">
                 <select
                     value={selectedGenre}
                     id='Genredropdown'
@@ -194,9 +198,10 @@ export default function Search() {
                     <option value="1972">1972</option>
                     <option value="1971">1971</option>
                     <option value="1970">1970</option>
-                </select>
-                <button type="submit" className="search-button">Search</button>
+                </select> 
+                </div>
             </form>
+            
             <div className="movie-grid" id='movie-grid'>
                 {movies.map((movie) => 
                     <div className='movie-item' key={movie.id}>
