@@ -385,6 +385,7 @@ body {
   right: 10px; 
 }
 
+@media only screen and (max-width: 600px) {
 .button {
   padding: 10px 20px;
   background-color: rgb(221, 152, 238);
@@ -393,6 +394,9 @@ body {
   border-radius: 5px;
   cursor: pointer;
   align-self: flex-start;
+  width: 100%;
+  max-width: 100px;
+  margin-top: 10px; /* Lisätään ylämarginaali */
 }
 
 .button:hover {
@@ -400,9 +404,12 @@ body {
 }
 
 .groupMembershipStatus {
+  width: 100%; /* Leveys 50% containerista */
+  max-width: 50px;
   color: #4eda2c;
+  margin-top: 10px; 
 }
-
+}
 
 /*REPONSIIVISUUS:*/
 /*1200-800px NÄYTTÖ:*/
@@ -937,4 +944,81 @@ body {
 
 .button:hover {
   background-color: rgb(176, 81, 189); 
+}
+
+/* RYHMÄN OMA SIVU*/
+
+.groupPageContainer {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #3f0f41;
+}
+
+.groupPageGroupName {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.groupPageGroupDescription {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.groupMovieListContainer,
+.groupShowListContainer,
+.groupMembersContainer {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.groupMovieListHeading,
+.groupShowListHeading,
+.groupMemberListHeading {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  display: block;
+  width: 100%; /* Laajennetaan otsikon leveys täyttämään koko container */
+  
+}
+
+.groupMovieListItem,
+.groupShowListItem,
+.groupMemberListItem {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #9c3b7f;
+  width: 200px; /* Määritä sopiva leveys elokuvalle */
+  margin: 0 10px 20px; /* Lisää tarvittaessa välit */
+}
+
+.groupMovieListItem img,
+.groupShowListItem img {
+  max-width: 100px;
+  max-height: 150px;
+  margin-left: 10px;
+}
+
+.groupMemberListItem button {
+  margin-left: 10px;
+  background-color: #d81b60;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.groupMemberListItem button:hover {
+  background-color: #b71c1c;
 }
