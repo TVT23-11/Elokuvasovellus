@@ -667,6 +667,17 @@ body {
   animation: carousel 30s linear infinite; 
 }
 
+.addShowToGroupListButton {
+  background-color: rgb(221, 152, 238);
+  color: #000000; 
+  padding: 5px 10px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
 /* LOGIN SIVUSTO */
 .login-container {
   width: 35%;
