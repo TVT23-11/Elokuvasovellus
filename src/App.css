@@ -277,14 +277,16 @@ body {
   display: flex;
   align-items: center;
 }
-
+@media screen and (max-width: 600px) {
 .search-container input[type="text"] {
   padding: 10px;
-  margin-right: 10px;
+  margin-right: 1em;
   border-radius: 5px;
-  width: 300px;
+  width: 200px;
+  max-width: 200px;
+  width: calc(100% - 80px);
 }
-
+}
 .search-container button {
   padding: 10px 20px;
   border-radius: 5px;
@@ -298,6 +300,7 @@ body {
 .search-container button:focus {
   background-color: rgb(176, 81, 189);
 }
+
 /* MOVIE VÄLILEHDEN HOMMELIT*/
 
 .movie-container {
@@ -326,6 +329,57 @@ body {
   display: block; 
   margin-top: 10px; 
 }
+
+/*SEARCH VÄLILEHDEN DROPDOWN AND SEARCH*/
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 300px;
+}
+.search-button{
+  margin-top: -10px;
+  margin-left: 5px;
+}
+
+.dropdowns-container {
+  display: flex;
+  justify-content: center;
+}
+
+.searchDropdown {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  width: 150px;
+}
+
+
+
+.addToGroupListSelectGroupsButton,
+.addToGroupListButton {
+  background-color: rgb(221, 152, 238);
+  color: #000000;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px; 
+  margin-top: 10px;
+}
+
 /* GROUP VÄLILEHDEN RYHMÄT*/
 
 .groups-container {
