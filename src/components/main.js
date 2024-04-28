@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 function Main() {
-  const [searchTerm, setSearchTerm] = useState('');
   const [ads, setAds] = useState([]);
   const [events, setEvents] = useState([]);
   const [adIndex, setAdIndex] = useState(0);
@@ -65,29 +64,8 @@ function Main() {
     };
   }, [ads, events]);
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    console.log("Haku:", searchTerm);
-  };
-
   return (
     <div>
-      <div className="search-container">
-        <form onSubmit={handleSearchSubmit}>
-          <input
-            type="text"
-            placeholder="Haku..."
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
-          <button type="submit">Hae</button>
-        </form>
-      </div>
-
       <div className="welcome-message-container">
         <h2 className="welcome-heading">Tervetuloa movie pro palveluun</h2>
         <div className="welcome-content">
