@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import LogoutButton from './logout';
 import { jwtToken } from './authSignals';
 
+
 export default function NavigationBar({ isAuthenticated, setIsAuthenticated }) {
   const handleLogout = () => {
     setIsAuthenticated(false); // Asetetaan käyttäjän kirjautumistila pois päältä
