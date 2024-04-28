@@ -67,14 +67,13 @@ function Main() {
   return (
     <div>
       <div className="welcome-message-container">
-        <h2 className="welcome-heading">Tervetuloa movie pro palveluun</h2>
+        <h2 className="welcome-heading">Tervetuloa elokuvien maailmaan!</h2>
         <div className="welcome-content">
-          <p>Täältä löydät kaikki tarvitsemasi elokuvatiedot ja paljon muuta!
-          Täältä löydät kaikki tarvitsemasi elokuvatiedot ja paljon muuta!
-          Täältä löydät kaikki tarvitsemasi elokuvatiedot ja paljon muuta!
-          Täältä löydät kaikki tarvitsemasi elokuvatiedot ja paljon muuta!
-          Täältä löydät kaikki tarvitsemasi elokuvatiedot ja paljon muuta!
-          Täältä löydät kaikki tarvitsemasi elokuvatiedot ja paljon muuta!
+          <p>Sivustomme tarjoaa sinulle ainutlaatuisen mahdollisuuden sukeltaa syvemmälle elokuvien lumoavaan universumiin. 
+            Etsitpä sitten viimeisimpiä ensi-iltoja, klassikoita tai piilotettuja helmiä, meiltä löydät kaiken tarvitsemasi.
+            Selaa kätevästi esitysaikoja kaikista Suomen elokuvateattereista, lisää suosikkisi listallesi ja luo omia elokuvaryhmiäsi, 
+            joihin voit koota samanhenkisiä teoksia. Lisäksi voit jakaa ajatuksiasi ja tunteitasi elokuvista kirjoittamalla arvosteluja, 
+            jotka auttavat muita löytämään juuri heille sopivia elokuvia. Tervetuloa rakentamaan elokuvakokemuksiasi yhdessä kanssamme!
           </p>
         </div>
       </div>
