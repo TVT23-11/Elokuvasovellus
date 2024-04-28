@@ -54,7 +54,7 @@ function App() {
       case '/register':
         return 'Luo tili';
       case '/search':
-        return 'search';
+        return 'Elokuvat';
       default:
         return 'Etusivu';
     }
