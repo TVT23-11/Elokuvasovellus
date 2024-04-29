@@ -284,10 +284,8 @@ export default function Search() {
                 </form>
                 <div className="movie-genre" id='movie-genre'>
                 </div>
-                {parseInt(selectedGenre)}
                 <div className="movie-grid" id='movie-grid'>
                     {movies.map((movie) =>
-                        
                         <div className='movie-item' key={movie.id} style={(movie.genre_ids.indexOf(parseInt(selectedGenre)) !== -1 || parseInt(selectedGenre) == 0) ? ({display: 'block'}) : ({display: 'none'})}>
                             
                             {movie.poster_path ? (
