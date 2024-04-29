@@ -23,7 +23,7 @@ export default function NavigationBar({ isAuthenticated, setIsAuthenticated }) {
     <div className="navigation-bar">
       <div className="nav-links">
         <Link to="/">Etusivu</Link>
-        <Link to="/movies">Elokuvat</Link>
+        <Link to="/search">Elokuvat</Link>
         <Link to="/teathers">Teatterit</Link>
         <Link to="/groups">Ryhmät</Link>
         <Link to="/reviews">Arvostelut</Link>
