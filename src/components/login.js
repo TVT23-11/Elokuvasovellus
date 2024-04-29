@@ -22,8 +22,7 @@ const kirjauduSisaan = () => {
     fetch('http://localhost:3001/user/login', requestOptions)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-            if(data == 'wrong password'){
+            if(data.error == 'wrong password' && data.error != 'user not found'){
                 document.getElementById('loginFormInfo').innerHTML = '<p>Virheellinen käyttäjätunnus tai salasana</p>';
             }
             else{

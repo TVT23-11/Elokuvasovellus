@@ -12,10 +12,13 @@ export default function NavigationBar({ isAuthenticated, setIsAuthenticated }) {
   const [username, setUsername] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3001/user/getUsername/?token=' + jwtToken.value)
+    if(jwtToken.value !== '' && jwtToken.value != 'undefined'){
+      fetch('http://localhost:3001/user/getUsername/?token=' + jwtToken.value)
       .then(response => response.json())
       .then(data => setUsername(data.username))
       .catch(error => console.error('Error fetching groups:', error));
+    }
+    
 
   }, []);
 
