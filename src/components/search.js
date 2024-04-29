@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { jwtToken } from './authSignals';
 
 export default function Search() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -34,7 +35,7 @@ export default function Search() {
     }, []);
 
 
-
+    const [movies, setMovies] = useState([]);
     const handleSearch = async (e) => {
         e.preventDefault();
 
@@ -49,41 +50,97 @@ export default function Search() {
         if (document.getElementById('yearDropdown').value > 0) {
             vuosi = '&year=' + document.getElementById('yearDropdown').value
         }
-
+        console.log('http://localhost:3001/TMDB/elokuvahaku?hakusana=' + hakusana + vuosi);
         fetch('http://localhost:3001/TMDB/elokuvahaku?hakusana=' + hakusana + vuosi)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Fetch-virhe: ' + response.status);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
-                let json = JSON.parse(data);
-                let moviegrid = document.getElementById('movie-grid');
-                console.log(document.getElementById('Genredropdown').value);
-                moviegrid.innerHTML = '';
-                json.results.forEach(function (movie) {
-                   
-                    let genreid = parseInt(document.getElementById('Genredropdown').value);
-                    if (movie.genre_ids.indexOf(genreid) > -1 || genreid == 0) {
-                        let movieElement = '<div class="movie-item" >';
-                        if (movie.poster_path) {
-                            movieElement += `<img src='https://image.tmdb.org/t/p/original${movie.poster_path}' alt='Poster for ${movie.original_title}' />`;
-                        } else {
-                            
-                            movieElement += `<img src= '/img/noposter.jpg' alt='Oletuskuva' />`
-                        }
-                        movieElement += `<div>${movie.original_title}</div>`;
-                        movieElement += `</div>`;
-                        moviegrid.innerHTML += movieElement;
-                    }
-
-                });
+                //let json = JSON.parse(data).results;
+                setMovies(JSON.parse(data).results);
             })
             .catch(error => {
-                setError('Hakuvirhe: ' + error.message);
-            });
+                console.error(error);
+              });
     };
+
+    let token = '';
+    if(jwtToken.value.length > 1){
+      token = jwtToken.value;
+    }
+
+    const [groups, setGroups] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3001/groups/All/' + token)
+            .then(response => response.json())
+            .then((data) => {
+                let groupData = new Array();
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].ismember === '1' && data[i].isaccepted == true) {
+                        groupData.push({ id: data[i].idgroup, name: data[i].name });
+                    }
+                }
+                setGroups(groupData);
+            })
+            .catch(error => console.error('Error fetching groups:', error));
+
+    }, []);
+    const [selectedMovieToGroupList, setSelectedMovieToGroupList] = useState([]);
+    const selectGroup = (id) => {
+        setSelectedMovieToGroupList(id);
+    };
+    const addToGroupMovieList = (group, movie, movieId, poster) => {
+        console.log(group, movie, movieId, poster);
+        const data = {
+            group: group,
+            moviename: movie,
+            movieId: movieId,
+            poster: poster
+          };
+          const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify(data)
+          };
+      
+          fetch('http://localhost:3001/groups/addToMovieList/', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+              if (data.error) {
+                console.error(data.error);
+              } else {
+                console.log(data.message);
+                document.getElementById(`addToGroupList_SelectGroupContainer_${movieId}`).innerHTML = '<span class="successText">Esitys lisätty ryhmän listalle</span>';
+              }
+            });
+
+    };
+
+    const addToFavorites = (movieid, original_title, poster) => {
+        document.getElementById(`favoriteButtonContainer_${movieid}`).innerHTML = 'Lisätty suosikkeihin';
+        const data = {
+            token: jwtToken.value,
+            id: movieid,
+            movie: original_title,
+            poster: poster,
+        };
+        console.log(data);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
+        };
+    
+        // Lähetetään pyyntö backendiin
+        fetch('http://localhost:3001/favorites/addFavorite/', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Suosikin lisäys onnistui:', data);
+            })
+            .catch(error => console.error('Virhe lisättäessä suosikkiin:', error));
+    };  
 
     return (
         <div>
@@ -168,6 +225,35 @@ export default function Search() {
                 <button type="submit" className="search-button">Search</button>
             </form>
             <div className="movie-grid" id='movie-grid'>
+                {movies.map((movie) => 
+                    <div className='movie-item' key={movie.id}>
+                        {movie.poster_path ? (
+                            <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={`Elokuvan ${movie.original_title} kuva`} key={`poster${movie.id}`} />
+                        ) : (
+                            <img src='/img/noposter.jpg' alt={`Elokuvan ${movie.original_title} kuva`} key={`poster${movie.id}`} />
+                        )}
+                        <div className='movieTitle' key={`Title_${movie.id}`}>{movie.original_title}</div>
+                        {jwtToken.value.length > 1 &&
+                            <div className='addToGroupListContainer'>
+                                <button className='addToGroupListSelectGroupsButton' onClick={() => selectGroup(movie.id)}>Lisää ryhmän listalle</button>
+                                {selectedMovieToGroupList == movie.id &&
+                                    <div className='addToGroupList_SelectGroupContainer' id={`addToGroupList_SelectGroupContainer_${movie.id}`}>
+                                        {groups.map((group) =>
+                                            <button className='addToGroupListButton' onClick={() => addToGroupMovieList(group.id, movie.original_title, movie.id, `https://image.tmdb.org/t/p/original${movie.poster_path}`)}>{group.name}</button>
+                                        )}
+                                    </div>
+                                }
+
+                            </div>
+                        }
+                        {jwtToken.value.length > 1 &&
+                            <div id={`favoriteButtonContainer_${movie.id}`}>
+                            <button className="addToFavoritesButton" onClick={() => addToFavorites(movie.id, movie.original_title, `https://image.tmdb.org/t/p/original${movie.poster_path}`)}>Lisää suosikiksi</button>
+                            </div>
+                        }
+                        
+                    </div>
+                )}
             </div>
             <div className="movie-genre" id='movie-genre'>
             </div>

@@ -728,3 +728,35 @@ body {
 #newGroupForm_addNewGroup:hover {
   background-color: rgb(176, 81, 189); 
 }
+
+.movieFormContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie-itemss {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #3f0f41;
+  text-align: center;
+}
+
+.movie-item img {
+  display: block;
+  margin: 0 auto;
+}
+
+.movieMovieTitleContainer {
+  margin-top: 10px;
+}
+
+.movieMovieTitle {
+  font-weight: bold;
+}
+
+.deleteFavoritesButton {
+  margin-top: 10px;
+}
