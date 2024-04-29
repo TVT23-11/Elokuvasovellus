@@ -21,29 +21,29 @@ export default function Review() {
             <div className='reviewMovieTitle' key={`reviewMovieTitle${i}`}>{review.moviename}</div>
             <div className='reviewStarsContainer' key={`reviewStarsContainer${i}`}>
               {review.numberofstars > 0 ? (
-              <img src={'/img/star_full.jpg'} className='reviewStarImage' />
+              <img src={'/img/star_full.png'} className='reviewStarImage' />
               ):(
-                <img src={'/img/star_empty.jpg'} className='reviewStarImage' />
+                <img src={'/img/star_empty.png'} className='reviewStarImage' />
               )}
               {review.numberofstars > 1 ? (
-              <img src={'/img/star_full.jpg'} className='reviewStarImage' />
+              <img src={'/img/star_full.png'} className='reviewStarImage' />
               ):(
-                <img src={'/img/star_empty.jpg'} className='reviewStarImage' />
+                <img src={'/img/star_empty.png'} className='reviewStarImage' />
               )}
               {review.numberofstars > 2 ? (
-              <img src={'/img/star_full.jpg'} className='reviewStarImage' />
+              <img src={'/img/star_full.png'} className='reviewStarImage' />
               ):(
-                <img src={'/img/star_empty.jpg'} className='reviewStarImage' />
+                <img src={'/img/star_empty.png'} className='reviewStarImage' />
               )}
               {review.numberofstars > 3 ? (
-              <img src={'/img/star_full.jpg'} className='reviewStarImage' />
+              <img src={'/img/star_full.png'} className='reviewStarImage' />
               ):(
-                <img src={'/img/star_empty.jpg'} className='reviewStarImage' />
+                <img src={'/img/star_empty.png'} className='reviewStarImage' />
               )}
               {review.numberofstars > 4 ? (
-              <img src={'/img/star_full.jpg'} className='reviewStarImage' />
+              <img src={'/img/star_full.png'} className='reviewStarImage' />
               ):(
-                <img src={'/img/star_empty.jpg'} className='reviewStarImage' />
+                <img src={'/img/star_empty.png'} className='reviewStarImage' />
               )}
               
             </div>
