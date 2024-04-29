@@ -22,43 +22,71 @@ body {
 .page-title {
   margin-top: 20px;
   text-align: center;
+  font-family: Helvetica, sans-serif;
+  
 }
 
 /* ETUSIVUN MAINOSLAATIKKO*/
 
+.welcome-message-container {
+  max-width: 100%;
+  margin: 50px auto 20px; 
+  padding: 20px;
+  border: 1px solid #ffffff;
+  text-align: center; 
+  background-color: #550343;  
+  
+}
+
+.welcome-heading {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.welcome-content {
+  font-size: 16px;
+  color: #ffffff;
+  max-width: 800px; 
+  margin: 0 auto; 
+}
+
 .ad-container-wrapper {
-  position: relative;
-  width: 80%;
-  height: 80%;
-  overflow: hidden;
+  display: flex; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+  max-width: 100%;
+  margin-top: 20px; 
 }
 
 .ad-container {
-  width: 30%;
-  height: 60%;
+  width: 35%;
+  height: 80%;
   position: absolute;
-  left: 20px;
-  top: 300px;
+  right: 10%;
+  top: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #3f0f41;  
-  border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px rgba(253, 1, 1, 0.1),
+  inset 0px 0px 100px rgba(255, 0, 0, 0.1);
+  
 }
 
-.ad-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
+.ad-heading {
+  text-align: center;
+  margin: 0; 
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%; 
+  transform: translateY(-50%); 
 }
 
 .ad-item {
-  width: 800px; 
-  height: 500px; 
+  width: 100%; 
+  height: 80%; 
   position: relative;
 }
-
 
 .ad-image {
   max-width: 100%;
@@ -73,6 +101,77 @@ body {
   transform: translate(-50%, -50%); 
   text-align: center; 
   color: white; 
+}
+
+.event-container-wrapper {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  overflow: hidden;
+}
+
+.event-container {
+  width: 35%;
+  height: 80%;
+  position: absolute;
+  left: 10%; 
+  top: 50%;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 10px rgba(253, 1, 1, 0.1),
+    inset 0px 0px 100px rgba(255, 0, 0, 0.1);
+   }
+
+.event-heading {
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+.event-item {
+  width: 100%;
+  height: 80%;
+  position: relative;
+}
+
+.event-image {
+  max-width: 55%;
+  max-height: 50%;
+  object-fit: cover;
+}
+
+.event-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  max-width: 1000px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .ad-container,
+  .event-container {
+    width: 45%; 
+    position: absolute; 
+  }
+
+  .ad-container {
+    top: 130%; 
+    transform: translateY(-50%); 
+  }
+
+  .event-container {
+    top: 130%;
+    transform: translateY(-50%); 
+  }
 }
 
 
@@ -91,6 +190,9 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  width: 160px;
+  height: 50px;
+
 }
 
 .dropdown-content {
@@ -101,7 +203,6 @@ body {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   margin-top: 0px;
-  margin-right: 10px;
   border-radius: 5px;
 }
 
@@ -143,7 +244,6 @@ body {
   background-color: rgb(176, 81, 189);
 
 }
-
 
 
 /* LOGIN BUTTON*/
@@ -188,7 +288,7 @@ body {
 
 .navigation-bar a:hover {
   background-color: rgb(176, 81, 189);
-  /* napin taustaväri vaihtuu hiiren ollessa päällä */
+  
 }
 
 /* HAKU LAATIKKO TÄSTÄ*/
@@ -197,19 +297,20 @@ body {
   justify-content: center;
   margin-top: 20px;
 }
-
 .search-container form {
   display: flex;
   align-items: center;
 }
-
+@media screen and (max-width: 600px) {
 .search-container input[type="text"] {
   padding: 10px;
-  margin-right: 10px;
+  margin-right: 1em;
   border-radius: 5px;
-  width: 300px;
+  width: 200px;
+  max-width: 200px;
+  width: calc(100% - 80px);
 }
-
+}
 .search-container button {
   padding: 10px 20px;
   border-radius: 5px;
@@ -223,6 +324,7 @@ body {
 .search-container button:focus {
   background-color: rgb(176, 81, 189);
 }
+
 /* MOVIE VÄLILEHDEN HOMMELIT*/
 
 .movie-container {
@@ -251,25 +353,91 @@ body {
   display: block; 
   margin-top: 10px; 
 }
+
+/*SEARCH VÄLILEHDEN DROPDOWN AND SEARCH*/
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 300px;
+}
+.search-button{
+  margin-top: -10px;
+  margin-left: 5px;
+}
+
+.dropdowns-container {
+  display: flex;
+  justify-content: center;
+}
+
+.searchDropdown {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  width: 150px;
+}
+
+.addToGroupListSelectGroupsButton,
+.addToGroupListButton {
+  background-color: rgb(221, 152, 238);
+  color: #000000;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px; 
+  margin-top: 10px;
+}
+
 /* GROUP VÄLILEHDEN RYHMÄT*/
+
+.groups-container {
+  margin: 20px auto;
+  max-width: 800px;
+  max-height: 800px;
+ 
+}
+
+.group-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
 
 .group-name {
   font-size: 20px;
   font-weight: bold;
   color: #ffffff;
-  text-align: center;
 }
 
 
 .group-description {
-  margin-top: 5px;
+  margin-top: 25px;
+  margin-bottom: 30px;
   color: #ffffff;
   text-align: center;
   overflow: hidden; 
   text-overflow: ellipsis; 
   white-space: pre-line; 
-  max-height: clamp(40px, 100%, 40px); 
+  max-height: clamp(50px, 100%, 40px); 
   word-wrap: break-word; 
+  overflow-y: auto;
+  max-height: 100px;
+  max-width: 90%;
 }
 
 
@@ -277,21 +445,50 @@ body {
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 10px;
-  border-radius: 10px;
-  margin-top: 20px;
+  margin-top: 30px;
   width: 100%;
   display: flex; 
   flex-direction: column; 
   align-items: center; 
-  height: 120px;
-  background-color: rgba(48, 16, 78, 0.952);
+  height: 200px;
+  background-color: #3f0f41;
+  position: relative;
+  overflow-y: auto;
 }
 
+.groupMemberStatus {
+  position: absolute; 
+  bottom: 10px; 
+  justify-content: center;
+}
 
-.groups-container {
-  margin: 20px auto;
-  max-width: 800px;
-  margin: 0 auto;
+@media only screen and (max-width: 600px) {
+.button {
+  padding: 10px 20px;
+  background-color: rgb(221, 152, 238);
+  color: #050505;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-start;
+  width: 100%;
+  max-width: 200px;
+  max-height: 50px;
+  margin-top: -5px; 
+  font-size: 10px;
+}
+
+.button:hover {
+  background-color: rgb(176, 81, 189);
+}
+
+.groupMembershipStatus {
+  width: 100%; 
+  max-width: 30px;
+  color: #4eda2c;
+  margin-top: 10px; 
+  font-size: 12px;
+}
 }
 
 /*REPONSIIVISUUS:*/
@@ -420,8 +617,7 @@ body {
   background-color: rgb(176, 81, 189);
 }
 
-
-/*React Link -elementtie tyyli*/
+/* TEATTERIT VÄLILEHTI*/
 .link {
   color:white;
 }
@@ -479,9 +675,9 @@ body {
 
 /* TEATTERI DRIOP DOWN */
 .custom-dropdown {
-  position: absolute;
-  top: 145px;
-  left: 250px;
+  position: relative;
+  margin: 0 auto; 
+  transform: translateY(50%);
 }
 
 .custom-dropdown-btn {
@@ -492,6 +688,9 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  width: 100%; 
+  max-width: 200px; 
+  margin-top: -20px;
 }
 
 .custom-dropdown-content {
@@ -550,28 +749,41 @@ body {
   animation: carousel 30s linear infinite; 
 }
 
+.addShowToGroupListButton {
+  background-color: rgb(221, 152, 238);
+  color: #000000; 
+  padding: 5px 10px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
 /* LOGIN SIVUSTO */
 .login-container {
-  width: 35%;
-  height: 50%;
+  width: 500px; 
+  height: auto;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #3f0f41; 
-  border-radius: 20px; 
+  background-color: #3f0f41;
+  border-radius: 20px;
   border: 1px solid #ccc;
+  padding: 20px;
 }
 
 .login-input {
   margin-bottom: 10px;
   padding: 10px;
-  margin-right: 80px;
   border-radius: 5px;
-  width: 180px;
+  width: 100%;
+  max-width: 300px;
 }
 
 .loginPage-button {
@@ -580,47 +792,57 @@ body {
   padding: 10px 12px;
   background-color: rgb(221, 152, 238);
   border-radius: 5px;
+  width: 100%;
+  max-width: 200px;
 }
 
 .link {
-  position: absolute;
-  bottom: 100px;
-  
+  position: relative;
+  margin-top: 20px;
 }
 
 .loginTitle {
-  position: absolute;
-  top: 10px; 
-  transform: translateX(-50%);
-  left: 60%;
-  width: 80%;
+  position: relative;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-container {
+    width: 80%; 
+    max-width: none; 
+    margin-top: 20%;
+  }
 }
 
 /* REGISTER SIVUSTO */
 
 .registerFormContainer {
-  width: 35%;
-  height: 50%;
+  width: 70%; 
+  height: auto; 
+  max-width: 400px; 
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  flex-direction: column; 
   align-items: center;
   justify-content: center;
   background-color: #3f0f41; 
   border-radius: 20px; 
   border: 1px solid #ccc;
+  padding: 20px;
 }
 
 .registerFormTable td input[type="text"],
 .registerFormTable td input[type="password"] {
-  width: 180px; 
+  width: 100%; 
   padding: 10px; 
   margin-bottom: 10px; 
-  margin-right: 20px; 
+  margin-right: 0; 
   border-radius: 5px; 
- 
 }
 
 .validationStatus {
@@ -634,31 +856,96 @@ body {
   padding: 10px 12px;
   background-color: rgb(221, 152, 238);
   border-radius: 5px;
+  width: 100%; 
+  max-width: 200px; 
+}
+
+@media only screen and (max-width: 600px) {
+  .registerFormContainer {
+    width: 90%; 
+    max-width: none; 
+    margin-top: 20%; 
+  }
+
+  .registerFormTable td input[type="text"],
+  .registerFormTable td input[type="password"] {
+    width: 100%; 
+    max-width: none; 
+  }
+
+  .register-button {
+    width: 100%; 
+    max-width: none; 
+  }
 }
 
 /* PROFIILIN HALLINTA */
-.account-container {
+
+.profile-management {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 200px; 
-  height: 300px; 
-  background-color: #3f0f41; 
-  padding: 30px;
-  border: 1px solid #ccc;
-  margin-left: 200px;
-  margin-top: 50px;
+  flex-direction: column; 
+  align-items: center; 
+  margin-top: 50px; 
 }
 
-.delete-account-button {
-  color: black;
-  font-size: 16px;
-  padding: 10px 12px;
-  background-color: rgb(221, 152, 238);
-  border-radius: 5px;
-  margin-top: auto;
+.container-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
 }
+
+.email-change-container,
+.account-container {
+  width: 90%; 
+  max-width: 700px; 
+  background-color: #3f0f41; 
+  padding: 20px; 
+  border: 1px solid #ccc;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  margin-bottom: 20px; 
+}
+
+.email-change-container h1 {
+  margin-bottom: 20px; 
+}
+
+.email-change-container form,
+.account-container {
+  width: 100%;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+}
+
+.email-change-container input[type="email"] {
+  width: 100%; 
+  max-width: 300px; 
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.email-change-container button[type="submit"],
+.delete-account-button {
+  padding: 10px 20px;
+  background-color: rgb(221, 152, 238);
+  color: #050505;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; 
+  width: 100%; 
+  max-width: 200px; 
+}
+
+.email-change-container button[type="submit"]:hover,
+.delete-account-button:hover {
+  background-color: rgb(176, 81, 189);
+}
+
 
 /* GROUP MANAGEMENT SIVUSTO*/
 
@@ -667,15 +954,22 @@ body {
 }
 
 .formButton {
-  color: black;
+  color: rgb(0, 0, 0);
   font-size: 16px;
   padding: 10px 12px;
   background-color: rgb(221, 152, 238);
   border-radius: 5px;
-  margin-top: auto;
-  margin-left: 250px;
-  margin-top: 30px;
-  
+  margin-left: 25%; 
+  margin-top: 5%; 
+}
+
+@media only screen and (max-width: 600px) {
+  .formButton {
+    margin-left: 5%; 
+    margin-top: 10px; 
+    width: 40%; 
+    max-width: 200px; 
+  }
 }
 
 .formButton:hover {
@@ -683,17 +977,16 @@ body {
 }
 
 .newGroupFormContainer {
+  margin: 20px auto; 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30%; 
-  height: 20%; 
-  background-color: #3f0f41; 
-  padding: 30px;
+  width: 90%;
+  max-width: 600px;
+  background-color: #3f0f41;
+  padding: 20px;
   border: 1px solid #ccc;
-  margin-left: 10px;
-  margin-top: 50px;
 }
 
 #newGroupForm_infoLine {
@@ -723,6 +1016,8 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px; 
+  width: 40%; 
 }
 
 #newGroupForm_addNewGroup:hover {
@@ -759,4 +1054,209 @@ body {
 
 .deleteFavoritesButton {
   margin-top: 10px;
+}
+
+.closeButton {
+  position: absolute; 
+  bottom: 10px; 
+  right: 10px; 
+  background-color: rgb(221, 152, 238);
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background-color: rgb(176, 81, 189); 
+}
+
+@media only screen and (max-width: 600px) {
+  .newGroupFormContainer {
+    width: 90%; 
+    padding: 10px; 
+  }
+  .closeButton {
+    bottom: 5px; 
+    right: 5px; 
+  }
+}
+
+.manageGroupsContainer {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.manageGroupsHeader {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.manageGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #3f0f41; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.manageGroupName {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: rgb(221, 152, 238);
+  color: #020202;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(176, 81, 189); 
+}
+
+/* RYHMÄN OMA SIVU*/
+
+.groupPageContainer {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #3f0f41;
+}
+
+.groupPageGroupName {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.groupPageGroupDescription {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.groupMovieListContainer,
+.groupShowListContainer,
+.groupMembersContainer {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.groupMovieListHeading,
+.groupShowListHeading,
+.groupMemberListHeading {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  display: block;
+  width: 100%; 
+  
+}
+
+.groupMovieListItem,
+.groupShowListItem,
+.groupMemberListItem {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #9c3b7f;
+  width: 200px; 
+  margin: 0 10px 20px; 
+}
+
+.groupMovieListItem img,
+.groupShowListItem img {
+  max-width: 100px;
+  max-height: 150px;
+  margin-left: 10px;
+}
+
+.groupMemberListItem button {
+  margin-left: 10px;
+  background-color: #d81b60;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.groupMemberListItem button:hover {
+  background-color: #b71c1c;
+}
+
+.joinRequestContainer {
+  margin-left: 2%;
+  padding: 1%;
+  border-radius: 3%;
+  max-width: 300px;
+}
+
+.acceptRequestsGroupContainer {
+  margin-bottom: 1.5%;
+  padding: 1%;
+  background-color: #180f41;
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+}
+
+.acceptJoinRequestGroupName {
+  font-weight: bold;
+  margin-bottom: 1%;
+  border-radius: 5px;
+}
+
+.acceptUserToGroupContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 2%;
+  background-color: #3f0f41;
+  padding-left: 2%;
+}
+
+.joinRequestButtonContainer {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: flex-start;
+  border-radius: 5px;
+  gap: 10px;
+}
+
+.acceptUserToGroup, .denyUserToGroup {
+  padding: 1% 2%;
+  border-radius: 0.3em;
+  margin-right: 15px;
+}
+
+.acceptUserToGroup {
+  background-color: #4cd622;
+  color: rgb(2, 0, 0);  
+}
+
+.denyUserToGroup {
+  background-color: #f44336;
+  color: white;
 }

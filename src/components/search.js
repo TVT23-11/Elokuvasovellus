@@ -240,10 +240,10 @@ export default function Search() {
                             className="searchDropdown"
                         >
                             <option value='0'>Valitse Genre</option>
-                            {genres.map((genre) =>
-                                <option key={genre.id} value={genre.id}>{genre.name}</option>
-                            )}
-
+                            {genres.map((genre)=>
+                            <option key={genre.id} value={genre.id}>{genre.name}</option>
+                        )}
+                            
                         </select>
                         <select
 
@@ -314,9 +314,9 @@ export default function Search() {
                 {parseInt(selectedGenre)}
                 <div className="movie-grid" id='movie-grid'>
                     {movies.map((movie) =>
-
-                        <div className='movie-item' key={movie.id} style={(movie.genre_ids.indexOf(parseInt(selectedGenre)) !== -1 || parseInt(selectedGenre) == 0) ? ({ display: 'block' }) : ({ display: 'none' })}>
-
+                       
+                        <div className='movie-item' key={movie.id} style={(movie.genre_ids.indexOf(parseInt(selectedGenre)) !== -1 || parseInt(selectedGenre) == 0) ? ({display: 'block'}) : ({display: 'none'})}>
+                            
                             {movie.poster_path ? (
                                 <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={`Elokuvan ${movie.original_title} kuva`} key={`poster${movie.id}`} />
                             ) : (
@@ -346,7 +346,7 @@ export default function Search() {
                                     <button className="addToFavoritesButton" onClick={() => addToFavorites(movie.id, movie.original_title, `https://image.tmdb.org/t/p/original${movie.poster_path}`)}>Lisää suosikiksi</button>
                                 </div>
                             }
-                        </div>
+                        </div>                      
                     )}
                 </div>
             </div>

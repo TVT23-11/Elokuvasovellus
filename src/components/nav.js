@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LogoutButton from './logout';
+import { jwtToken } from './authSignals';
+
 
 export default function NavigationBar({ isAuthenticated, setIsAuthenticated }) {
   const handleLogout = () => {
     setIsAuthenticated(false); // Asetetaan käyttäjän kirjautumistila pois päältä
   };
 
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    if(jwtToken.value !== '' && jwtToken.value != 'undefined'){
+      fetch('http://localhost:3001/user/getUsername/?token=' + jwtToken.value)
+      .then(response => response.json())
+      .then(data => setUsername(data.username))
+      .catch(error => console.error('Error fetching groups:', error));
+    }
+    
+
+  }, []);
+
   return (
     <div className="navigation-bar">
       <div className="nav-links">
         <Link to="/">Etusivu</Link>
-        <Link to="/movies">Elokuvat</Link>
+        <Link to="/search">Elokuvat</Link>
         <Link to="/teathers">Teatterit</Link>
         <Link to="/groups">Ryhmät</Link>
         <Link to="/reviews">Arvostelut</Link>
@@ -20,7 +35,7 @@ export default function NavigationBar({ isAuthenticated, setIsAuthenticated }) {
            <Link to="/login" className="login-button">Kirjaudu Sisään</Link>
         ) : (
           <div className="dropdown">
-            <button className="dropbtn">Dropdownvalikko</button>
+            <button className="dropbtn">Hei, {username}</button>
             <div className="dropdown-content">
               <Link to="/profile">Profiili</Link>
               <Link to="/groupmanagement">Ryhmien hallinta</Link>
