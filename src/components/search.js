@@ -171,56 +171,63 @@ export default function Search() {
         );
     }
 
-    function SearchResults() {
+  
 
-        const [genres, setGenres] = useState([]);
+    const [genres, setGenres] = useState([]);
 
-        useEffect(() => {
-            fetch('http://localhost:3001/TMDB/genre')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Fetch-virhe: ' + response.status);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    let json = JSON.parse(data);
-                    setGenres(json.genres);
-                })
-                .catch(error => {
-                    console.error('Genren Hakuvirhe:', error.message);
-                });
-        }, []);
+    useEffect(() => {
+        fetch('http://localhost:3001/TMDB/genre')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Fetch-virhe: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                let json = JSON.parse(data);
+                setGenres(json.genres);
+            })
+            .catch(error => {
+                console.error('Genren Hakuvirhe:', error.message);
+            });
+    }, []);
 
-        const addToFavorites = (movieid, original_title, poster) => {
-            document.getElementById(`favoriteButtonContainer_${movieid}`).innerHTML = 'Lisätty suosikkeihin';
-            const data = {
-                token: jwtToken.value,
-                id: movieid,
-                movie: original_title,
-                poster: poster,
-            };
-            console.log(data);
-            const requestOptions = {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(data)
-            };
-
-            // Lähetetään pyyntö backendiin
-            fetch('http://localhost:3001/favorites/addFavorite/', requestOptions)
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Suosikin lisäys onnistui:', data);
-                })
-                .catch(error => console.error('Virhe lisättäessä suosikkiin:', error));
+    const addToFavorites = (movieid, original_title, poster) => {
+        document.getElementById(`favoriteButtonContainer_${movieid}`).innerHTML = 'Lisätty suosikkeihin';
+        const data = {
+            token: jwtToken.value,
+            id: movieid,
+            movie: original_title,
+            poster: poster,
+        };
+        console.log(data);
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
         };
 
-        return (
-            <div>
+        // Lähetetään pyyntö backendiin
+        fetch('http://localhost:3001/favorites/addFavorite/', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Suosikin lisäys onnistui:', data);
+            })
+            .catch(error => console.error('Virhe lisättäessä suosikkiin:', error));
+    };
+
+
+
+
+    return (
+        <div>
+            {showReviewForm ? (
+                <ReviewForm />
+            ) : (
+                <div>
                 <form onSubmit={handleSearch} className="search-container">
                     <div className="search-input-container">
                         <input
@@ -348,15 +355,6 @@ export default function Search() {
                     )}
                 </div>
             </div>
-        );
-    }
-
-    return (
-        <div>
-            {showReviewForm ? (
-                <ReviewForm />
-            ) : (
-                <SearchResults />
             )}
         </div>
     );
