@@ -4,34 +4,7 @@ import { jwtToken } from './authSignals';
 export default function Search() {
     const [searchTerm, setSearchTerm] = useState('');
     const [setError] = useState(null);
-    const [selectedGenre, setSelectedGenre] = useState('');
-
-    useEffect(() => {
-        fetch('http://localhost:3001/TMDB/genre')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Fetch-virhe: ' + response.status);
-                }
-                return response.json();
-            })
-            .then(data => {
-                let json = JSON.parse(data);
-                console.log(data);
-                console.log('genret tuleeko', json.genres[0]);
-
-                let Genredropdown = document.getElementById('Genredropdown');
-                json.genres.forEach(function (genre) {
-                    let newGenre = document.createElement('option');
-                    newGenre.value = genre.id;
-                    newGenre.innerHTML = genre.name;
-                    Genredropdown.append(newGenre);
-
-                });
-            })
-            .catch(error => {
-                console.error('Genren Hakuvirhe:', error.message);
-            });
-    }, []);
+    const [selectedGenre, setSelectedGenre] = useState('0');
 
     const [movies, setMovies] = useState([]);
     const handleSearch = async (e) => {
@@ -53,6 +26,7 @@ export default function Search() {
             .then(response => response.json())
             .then(data => {
                 //let json = JSON.parse(data).results;
+                console.log(JSON.parse(data).results);
                 setMovies(JSON.parse(data).results);
             })
             .catch(error => {
@@ -118,13 +92,13 @@ export default function Search() {
     const addReview = (id, movie, poster) => {
         console.log(id, movie, poster);
         setShowReviewForm(true);
-        setReview({id: id, movie: movie, poster: poster});
+        setReview({ id: id, movie: movie, poster: poster });
     };
 
     const closeReviewForm = () => {
         setShowReviewForm(false);
         setReviewSuccessful(false);
-        setReview({id: '', movie: '', poster: ''});
+        setReview({ id: '', movie: '', poster: '' });
     };
 
     const [reviewSuccessful, setReviewSuccessful] = useState(false);
@@ -152,11 +126,11 @@ export default function Search() {
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(data)
         };
-      
-          fetch('http://localhost:3001/review/addReview/', requestOptions)
+
+        fetch('http://localhost:3001/review/addReview/', requestOptions)
             .then(response => response.json())
             .then(data => {
-                if(data.message = 'success'){
+                if (data.message = 'success') {
                     // Arvostelu lisätty onnistuneesti
                     setReviewSuccessful(true);
                 } else {
@@ -165,8 +139,8 @@ export default function Search() {
             })
             .catch(error => console.error('Error fetching groups:', error));
     };
-    
-    function ReviewForm(){
+
+    function ReviewForm() {
         return (
             <div>
                 <button className='palaaHakutuloksiin' onClick={() => closeReviewForm()}>Palaa hakusivulle</button>
@@ -197,8 +171,28 @@ export default function Search() {
         );
     }
 
-    function SearchResults(){
-        return(
+    function SearchResults() {
+
+        const [genres, setGenres] = useState([]);
+
+        useEffect(() => {
+            fetch('http://localhost:3001/TMDB/genre')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Fetch-virhe: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    let json = JSON.parse(data);
+                    setGenres(json.genres);
+                })
+                .catch(error => {
+                    console.error('Genren Hakuvirhe:', error.message);
+                });
+        }, []);
+
+        return (
             <div>
                 <form onSubmit={handleSearch} className="search-container">
                     <div className="search-input-container">
@@ -219,6 +213,10 @@ export default function Search() {
                             className="searchDropdown"
                         >
                             <option value='0'>Valitse Genre</option>
+                            {genres.map((genre)=>
+                            <option key={genre.id} value={genre.id}>{genre.name}</option>
+                        )}
+                            
                         </select>
                         <select
 
@@ -286,9 +284,12 @@ export default function Search() {
                 </form>
                 <div className="movie-genre" id='movie-genre'>
                 </div>
+                {parseInt(selectedGenre)}
                 <div className="movie-grid" id='movie-grid'>
                     {movies.map((movie) =>
-                        <div className='movie-item' key={movie.id}>
+                        
+                        <div className='movie-item' key={movie.id} style={(movie.genre_ids.indexOf(parseInt(selectedGenre)) !== -1 || parseInt(selectedGenre) == 0) ? ({display: 'block'}) : ({display: 'none'})}>
+                            
                             {movie.poster_path ? (
                                 <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={`Elokuvan ${movie.original_title} kuva`} key={`poster${movie.id}`} />
                             ) : (
@@ -315,6 +316,7 @@ export default function Search() {
                             }
 
                         </div>
+                        
                     )}
                 </div>
             </div>
