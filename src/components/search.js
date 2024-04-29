@@ -171,8 +171,6 @@ export default function Search() {
         );
     }
 
-  
-
     const [genres, setGenres] = useState([]);
 
     useEffect(() => {
@@ -218,9 +216,6 @@ export default function Search() {
             })
             .catch(error => console.error('Virhe lisättäessä suosikkiin:', error));
     };
-
-
-
 
     return (
         <div>
