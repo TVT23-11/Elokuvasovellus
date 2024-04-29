@@ -192,6 +192,33 @@ export default function Search() {
                 });
         }, []);
 
+        const addToFavorites = (movieid, original_title, poster) => {
+            document.getElementById(`favoriteButtonContainer_${movieid}`).innerHTML = 'Lisätty suosikkeihin';
+            const data = {
+                token: jwtToken.value,
+                id: movieid,
+                movie: original_title,
+                poster: poster,
+            };
+            console.log(data);
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(data)
+            };
+
+            // Lähetetään pyyntö backendiin
+            fetch('http://localhost:3001/favorites/addFavorite/', requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Suosikin lisäys onnistui:', data);
+                })
+                .catch(error => console.error('Virhe lisättäessä suosikkiin:', error));
+        };
+
         return (
             <div>
                 <form onSubmit={handleSearch} className="search-container">
@@ -287,7 +314,7 @@ export default function Search() {
                 {parseInt(selectedGenre)}
                 <div className="movie-grid" id='movie-grid'>
                     {movies.map((movie) =>
-                        
+                       
                         <div className='movie-item' key={movie.id} style={(movie.genre_ids.indexOf(parseInt(selectedGenre)) !== -1 || parseInt(selectedGenre) == 0) ? ({display: 'block'}) : ({display: 'none'})}>
                             
                             {movie.poster_path ? (
@@ -314,9 +341,12 @@ export default function Search() {
                                     </div>
                                 </div>
                             }
-
-                        </div>
-                        
+                            {jwtToken.value.length > 1 &&
+                                <div id={`favoriteButtonContainer_${movie.id}`}>
+                                    <button className="addToFavoritesButton" onClick={() => addToFavorites(movie.id, movie.original_title, `https://image.tmdb.org/t/p/original${movie.poster_path}`)}>Lisää suosikiksi</button>
+                                </div>
+                            }
+                        </div>                      
                     )}
                 </div>
             </div>
