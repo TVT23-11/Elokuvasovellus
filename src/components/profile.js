@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { jwtToken } from './authSignals';
 
 const ProfileManagement = () => {
   const navigate = useNavigate();
   const [newEmail, setNewEmail] = useState('');
+  const [currentEmail, setCurrentEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleEmailChange = (event) => {
     setNewEmail(event.target.value);
   };
 
+  useEffect(() => {
+    fetch('http://localhost:3001/user/getEmail/?token=' + jwtToken.value)
+      .then(response => response.json())
+      .then(data => setCurrentEmail(data.email))
+      .catch(error => console.error('Error fetching groups:', error));
+
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const token = sessionStorage.getItem('token');
-
-    console.log('newEmail:', newEmail);
-
     try {
-      const response = await fetch(`http://localhost:3001/user/changeEmail/?id=${token}&newEmail=${newEmail}`, {
+      const response = await fetch(`http://localhost:3001/user/changeEmail/?id=${jwtToken.value}&newEmail=${newEmail}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -26,6 +31,7 @@ const ProfileManagement = () => {
       });
 
       if (response.ok) {
+        setCurrentEmail(newEmail);
         console.log('Sähköpostiosoite vaihdettu onnistuneesti');
         setNewEmail(''); // Tyhjennä lomakekenttä
       } else {
@@ -74,6 +80,7 @@ const ProfileManagement = () => {
     <div className="profile-management">
       <div className="email-change-container">
         <h3>Vaihda sähköposti</h3>
+        <p>Nykyinen sähköposti: <span className='currentEmail'>{currentEmail}</span></p>
         <form onSubmit={handleSubmit}>
           <input
             type="email"

@@ -21,7 +21,7 @@ const AcceptUserToGroup = (user, group) => {
       console.log(data.message);
       if(data.message == 'success'){
         console.log('Käyttäjä hyväksytty ryhmään');
-        document.getElementById('acceptMember_'+user+'-'+group).innerHTML = '<div class="acceptedToGroup">Hyväksytty</div>';
+        document.getElementById('acceptMember_'+user+'-'+group).innerHTML = '<div class="acceptedToGroup">Hyväksytty ryhmään</div>';
       }
     })
     .catch(error => {
@@ -42,7 +42,7 @@ const DenyUserToGroup = (user, group) => {
       console.log(data.message);
       if(data.message == 'success'){
         console.log('Käyttäjän hakemus hylätty');
-        document.getElementById('acceptMember_'+user+'-'+group).innerHTML = '<div class="acceptedToGroup">Hylätty</div>';
+        document.getElementById('acceptMember_'+user+'-'+group).innerHTML = '<div class="acceptedToGroup">Hakemus hylätty</div>';
       }
     })
     .catch(error => {
@@ -70,7 +70,6 @@ function PendingJoinRequests() {
 
   let requestArray = new Array();
   let currentGroup = '';
-  //console.log(data);
   if (joinRequests != '') {
     let data = joinRequests;
     for (let i = 0; i < data.length; i++) {
@@ -86,17 +85,16 @@ function PendingJoinRequests() {
       }
 
     }
-    console.log(requestArray);
     return (
       <div className='joinRequestContainer'><p>Hyväksy käyttäjiä ryhmiisi:</p>
-        {requestArray.map((group) =>
+        {requestArray.map((group, i) =>
           
-          <div className='acceptRequestsGroup' key={`acceptRequest${group.key}`}><div className='acceptJoinRequestGroupName'>{group.groupname}</div>
+          <div className='acceptRequestsGroup' key={`acceptRequest${i}`}><div className='acceptJoinRequestGroupName'>{group.groupname}</div>
 
-            {group.users.map((user) =>
-              <div className='acceptUserToGroupContainer'>
+            {group.users.map((user, j) =>
+              <div className='acceptUserToGroupContainer' key={`acceptUserToGroupContainer${i}`}>
                 <p>{user.username}</p>
-                <div className='joinRequestButtonContainer' key={`acceptMember_${+user.iduser+'-'+group.idgroup}`}>
+                <div className='joinRequestButtonContainer' key={`acceptMember_${i}`} id={`acceptMember_${+user.iduser+'-'+group.idgroup}`}>
                   <button className='acceptUserToGroup' onClick={() => AcceptUserToGroup(user.iduser, group.idgroup)}>Hyväksy</button>
                   <button className='denyUserToGroup' onClick={() => DenyUserToGroup(user.iduser, group.idgroup)}>Hylkää</button>
                 </div>

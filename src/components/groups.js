@@ -128,7 +128,6 @@ function GroupPage(){
 
   return(
     <div>
-      Tämä on ryhmän {view} oma sivu.
       <button className='button backToGroupsListButton' onClick={() => setView(0)}>Siirry takaisin ryhmä-listaan</button>
       <div className='groupPageContainer'>
         <div className='groupPageGroupName' key={groupName}>{groupName}</div>
@@ -138,8 +137,8 @@ function GroupPage(){
           {groupMovieList.length == 0 ? (
             <div>Lista on tyhjä</div>
           ) : (
-            (groupMovieList.map(movie =>
-              <div className='groupMovieListItem' key={`movie${movie.id}`}>
+            (groupMovieList.map((movie, i) =>
+              <div className='groupMovieListItem' key={`movie${i}`}>
                 <div className='groupMovieListMovie'>{movie.moviename}</div>
                 <img src={movie.poster} alt={`Elokuvan ${movie.moviename} kuva`} />
                 </div>
@@ -152,8 +151,8 @@ function GroupPage(){
           {groupShowList.length == 0 ? (
             <div>Lista on tyhjä</div>
           ) : (
-            (groupShowList.map((show) =>
-              <div className='groupShowListItem' key={`show${show.id}`}>
+            (groupShowList.map((show, i) =>
+              <div className='groupShowListItem' key={`show${i}`}>
                 <div className='groupShowListMovie'>{show.moviename}</div>
                 <div className='groupShowListTheater'>{show.theater}</div>
                 <div className='groupShowListShowtime'>{show.showtime}</div>
