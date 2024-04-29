@@ -190,6 +190,9 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  width: 160px;
+  height: 50px;
+
 }
 
 .dropdown-content {
@@ -200,7 +203,6 @@ body {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   margin-top: 0px;
-  margin-right: 10px;
   border-radius: 5px;
 }
 
@@ -1169,4 +1171,60 @@ body {
 
 .groupMemberListItem button:hover {
   background-color: #b71c1c;
+}
+
+.joinRequestContainer {
+  margin-left: 2%;
+  padding: 1%;
+  border-radius: 3%;
+  max-width: 300px;
+}
+
+.acceptRequestsGroupContainer {
+  margin-bottom: 1.5%;
+  padding: 1%;
+  background-color: #180f41;
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+}
+
+.acceptJoinRequestGroupName {
+  font-weight: bold;
+  margin-bottom: 1%;
+  border-radius: 5px;
+}
+
+.acceptUserToGroupContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 2%;
+  background-color: #3f0f41;
+  padding-left: 2%;
+}
+
+.joinRequestButtonContainer {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: flex-start;
+  border-radius: 5px;
+  gap: 10px;
+}
+
+.acceptUserToGroup, .denyUserToGroup {
+  padding: 1% 2%;
+  border-radius: 0.3em;
+  margin-right: 15px;
+}
+
+.acceptUserToGroup {
+  background-color: #4cd622;
+  color: rgb(2, 0, 0);  
+}
+
+.denyUserToGroup {
+  background-color: #f44336;
+  color: white;
 }

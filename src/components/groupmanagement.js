@@ -94,9 +94,9 @@ function PendingJoinRequests() {
           <div className='acceptRequestsGroup' key={`acceptRequest${group.key}`}><div className='acceptJoinRequestGroupName'>{group.groupname}</div>
 
             {group.users.map((user) =>
-              <div className='acceptUserToGroup'>
+              <div className='acceptUserToGroupContainer'>
                 <p>{user.username}</p>
-                <div key={`acceptMember_${+user.iduser+'-'+group.idgroup}`} className='joinRequestButtonContainer'>
+                <div className='joinRequestButtonContainer' key={`acceptMember_${+user.iduser+'-'+group.idgroup}`}>
                   <button className='acceptUserToGroup' onClick={() => AcceptUserToGroup(user.iduser, group.idgroup)}>Hyväksy</button>
                   <button className='denyUserToGroup' onClick={() => DenyUserToGroup(user.iduser, group.idgroup)}>Hylkää</button>
                 </div>
