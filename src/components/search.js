@@ -143,18 +143,18 @@ export default function Search() {
     function ReviewForm() {
         return (
             <div>
-                <button className='palaaHakutuloksiin' onClick={() => closeReviewForm()}>Palaa hakusivulle</button>
+                <button className='ReturnToSearchResults' onClick={() => closeReviewForm()}>Palaa hakusivulle</button>
                 {reviewSuccessful ? (
                     <div>Arvostelu lisätty onnistuneesti!</div>
                 ) : (
-                    <div className='reviewFormContainer'>
+                    <div className='searchReviewFormContainer'>
                         <img src={review.poster} alt={`Elokuvan ${review.movie} kuva`} height={150} />
-                        <div className='reviewMovieTitle'>{review.movie}</div>
-                        <div className='reviewTextContainer'>
-                            <textarea className='reviewTextTextarea' id='reviewText' rows={10} cols={60}></textarea>
+                        <div className='searchReviewMovieTitle'>{review.movie}</div>
+                        <div className='searchReviewTextContainer'>
+                            <textarea className='searchReviewTextarea' id='reviewText' rows={10} cols={60} placeholder="Kirjoita arvostelu..." ></textarea>
                         </div>
-                        <div className='reviewStarsContainer'>
-                            <select className='reviewStars' id='reviewStars'>
+                        <div className='searchReviewStarsContainer'>
+                            <select className='searchReviewStars' id='reviewStars'>
                                 <option value=''>Valitse arvosana</option>
                                 <option value='1'>1</option>
                                 <option value='2'>2</option>
@@ -163,7 +163,7 @@ export default function Search() {
                                 <option value='5'>5</option>
                             </select>
                         </div>
-                        <button className='tallennaArvostelu' onClick={() => saveReview()}>Tallenna arvostelu</button>
+                        <button className='searchSaveReview' onClick={() => saveReview()}>Tallenna arvostelu</button>
                     </div>
                 )}
 
@@ -171,56 +171,58 @@ export default function Search() {
         );
     }
 
-    function SearchResults() {
+    const [genres, setGenres] = useState([]);
 
-        const [genres, setGenres] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:3001/TMDB/genre')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Fetch-virhe: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                let json = JSON.parse(data);
+                setGenres(json.genres);
+            })
+            .catch(error => {
+                console.error('Genren Hakuvirhe:', error.message);
+            });
+    }, []);
 
-        useEffect(() => {
-            fetch('http://localhost:3001/TMDB/genre')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Fetch-virhe: ' + response.status);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    let json = JSON.parse(data);
-                    setGenres(json.genres);
-                })
-                .catch(error => {
-                    console.error('Genren Hakuvirhe:', error.message);
-                });
-        }, []);
-
-        const addToFavorites = (movieid, original_title, poster) => {
-            document.getElementById(`favoriteButtonContainer_${movieid}`).innerHTML = 'Lisätty suosikkeihin';
-            const data = {
-                token: jwtToken.value,
-                id: movieid,
-                movie: original_title,
-                poster: poster,
-            };
-            console.log(data);
-            const requestOptions = {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(data)
-            };
-
-            // Lähetetään pyyntö backendiin
-            fetch('http://localhost:3001/favorites/addFavorite/', requestOptions)
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Suosikin lisäys onnistui:', data);
-                })
-                .catch(error => console.error('Virhe lisättäessä suosikkiin:', error));
+    const addToFavorites = (movieid, original_title, poster) => {
+        document.getElementById(`favoriteButtonContainer_${movieid}`).innerHTML = 'Lisätty suosikkeihin';
+        const data = {
+            token: jwtToken.value,
+            id: movieid,
+            movie: original_title,
+            poster: poster,
+        };
+        console.log(data);
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
         };
 
-        return (
-            <div>
+        // Lähetetään pyyntö backendiin
+        fetch('http://localhost:3001/favorites/addFavorite/', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Suosikin lisäys onnistui:', data);
+            })
+            .catch(error => console.error('Virhe lisättäessä suosikkiin:', error));
+    };
+
+    return (
+        <div>
+            {showReviewForm ? (
+                <ReviewForm />
+            ) : (
+                <div>
                 <form onSubmit={handleSearch} className="search-container">
                     <div className="search-input-container">
                         <input
@@ -324,39 +326,30 @@ export default function Search() {
                             {jwtToken.value.length > 1 &&
                                 <div className='searchExtraButtons'>
                                     <div className='addToGroupListContainer'>
-                                        <button className='addToGroupListSelectGroupsButton' onClick={() => selectGroup(movie.id)}>Lisää ryhmän listalle</button>
+                                        <button className='addToGroupListSelectGroupsButton searchPageButton' onClick={() => selectGroup(movie.id)}>Lisää ryhmän listalle</button>
                                         {selectedMovieToGroupList == movie.id &&
                                             <div className='addToGroupList_SelectGroupContainer' id={`addToGroupList_SelectGroupContainer_${movie.id}`}>
                                                 {groups.map((group) =>
-                                                    <button className='addToGroupListButton' onClick={() => addToGroupMovieList(group.id, movie.original_title, movie.id, `https://image.tmdb.org/t/p/original${movie.poster_path}`)}>{group.name}</button>
+                                                    <button className='addToGroupListButton searchPageButton' onClick={() => addToGroupMovieList(group.id, movie.original_title, movie.id, `https://image.tmdb.org/t/p/original${movie.poster_path}`)}>{group.name}</button>
                                                 )}
                                             </div>
                                         }
 
                                     </div>
                                     <div className='addReviewContainer'>
-                                        <button className='addReviewButton' onClick={() => addReview(movie.id, movie.original_title, `https://image.tmdb.org/t/p/original${movie.poster_path}`)}>Lisää arvostelu</button>
+                                        <button className='addReviewButton searchPageButton' onClick={() => addReview(movie.id, movie.original_title, `https://image.tmdb.org/t/p/original${movie.poster_path}`)}>Lisää arvostelu</button>
                                     </div>
                                 </div>
                             }
                             {jwtToken.value.length > 1 &&
                                 <div id={`favoriteButtonContainer_${movie.id}`}>
-                                    <button className="addToFavoritesButton" onClick={() => addToFavorites(movie.id, movie.original_title, `https://image.tmdb.org/t/p/original${movie.poster_path}`)}>Lisää suosikiksi</button>
+                                    <button className="addToFavoritesButton searchPageButton" onClick={() => addToFavorites(movie.id, movie.original_title, `https://image.tmdb.org/t/p/original${movie.poster_path}`)}>Lisää suosikiksi</button>
                                 </div>
                             }
                         </div>                      
                     )}
                 </div>
             </div>
-        );
-    }
-
-    return (
-        <div>
-            {showReviewForm ? (
-                <ReviewForm />
-            ) : (
-                <SearchResults />
             )}
         </div>
     );
