@@ -16,7 +16,7 @@ export default function Review() {
     <div className='reviewFormContainer'>
       {reviews.map((review, i) =>
         <div className='review-item' key={`reviewItem${i}`}>
-          <img src={review.poster} alt={`Elokuvan ${review.moviename} kuva`} height={150} key={`poster${i}`}/>
+          <img src={review.poster} alt={`Elokuvan ${review.moviename} kuva`} height={150} key={`poster${i}`} className='reviewPoster'/>
           <div className='reviewMovieTitleContainer'  key={`reviewMovieTitleContainer${i}`}>
             <div className='reviewMovieTitle' key={`reviewMovieTitle${i}`}>{review.moviename}</div>
             <div className='reviewStarsContainer' key={`reviewStarsContainer${i}`}>
