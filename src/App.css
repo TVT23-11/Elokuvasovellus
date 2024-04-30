@@ -51,129 +51,56 @@ body {
   margin: 0 auto; 
 }
 
-.ad-container-wrapper {
-  display: flex; 
-  justify-content: center; 
-  flex-wrap: wrap; 
-  max-width: 100%;
-  margin-top: 20px; 
-}
-
-.ad-container {
-  width: 35%;
-  height: 80%;
-  position: absolute;
-  right: 10%;
-  top: 50%;
-  display: flex;
-  align-items: center;
-  box-shadow: 0px 0px 10px rgba(253, 1, 1, 0.1),
-  inset 0px 0px 100px rgba(255, 0, 0, 0.1);
-  
-}
-
-.ad-heading {
+.ad-container,
+.event-container {
   text-align: center;
-  margin: 0; 
-  position: absolute;
-  top: 20px;
-  left: 0;
-  width: 100%; 
-  transform: translateY(-50%); 
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
+  max-width: 600px;
+  margin: auto;
+  bottom: 20px;
+  box-shadow: 0px 0px 10px rgba(253, 1, 1, 0.1),
+    inset 0px 0px 100px rgba(255, 0, 0, 0.1);
 }
 
-.ad-item {
-  width: 100%; 
-  height: 80%; 
-  position: relative;
+.container-wrapper {
+  display: flex; /* Lisää display: flex */
+  justify-content: center; /* Keskitä containerit vaakasuunnassa */
+  gap: 20px; /* Lisää tilaa containerien välille */
+  margin-top: 30px;
+}
+
+.ad-heading,
+.event-heading {
+  color: #ffffff;
+  text-align: center;
+}
+.ad-container {
+  margin-bottom: 30px; 
+}
+.ad-item,
+.event-item {
+  max-width: 100%; 
+  height: auto;
 }
 
 .ad-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-}
-
-.ad-content {
-  position: absolute; 
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%); 
-  text-align: center; 
-  color: white; 
-}
-
-.event-container-wrapper {
-  position: relative;
   width: 80%;
-  height: 80%;
-  overflow: hidden;
+  height: auto;
 }
-
-.event-container {
-  width: 35%;
-  height: 80%;
-  position: absolute;
-  left: 10%; 
-  top: 50%;
-  display: flex;
-  align-items: center;
-  box-shadow: 0px 0px 10px rgba(253, 1, 1, 0.1),
-    inset 0px 0px 100px rgba(255, 0, 0, 0.1);
-   }
-
-.event-heading {
-  text-align: center;
-  margin: 0;
-  position: absolute;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  transform: translateY(-50%);
-}
-
-.event-item {
-  width: 100%;
-  height: 80%;
-  position: relative;
-}
-
 .event-image {
-  max-width: 55%;
-  max-height: 50%;
-  object-fit: cover;
+  width: 60%;
+  height: auto;
 }
 
-.event-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  max-width: 1000px;
-}
-
-
-
-@media only screen and (max-width: 600px) {
+@media (max-width: 768px) {
   .ad-container,
   .event-container {
-    width: 45%; 
-    position: absolute; 
-  }
-
-  .ad-container {
-    top: 130%; 
-    transform: translateY(-50%); 
-  }
-
-  .event-container {
-    top: 130%;
-    transform: translateY(-50%); 
+    grid-column: auto; 
+    grid-row: auto; 
   }
 }
-
 
 /* DROPDOWN VALIKKO TÄSTÄ*/
 .dropdown {
@@ -190,6 +117,9 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  width: 160px;
+  height: 50px;
+
 }
 
 .dropdown-content {
@@ -200,7 +130,6 @@ body {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   margin-top: 0px;
-  margin-right: 10px;
   border-radius: 5px;
 }
 
@@ -1022,6 +951,38 @@ body {
   background-color: rgb(176, 81, 189); 
 }
 
+.movieFormContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie-itemss {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #3f0f41;
+  text-align: center;
+}
+
+.movie-item img {
+  display: block;
+  margin: 0 auto;
+}
+
+.movieMovieTitleContainer {
+  margin-top: 10px;
+}
+
+.movieMovieTitle {
+  font-weight: bold;
+}
+
+.deleteFavoritesButton {
+  margin-top: 10px;
+}
+
 .closeButton {
   position: absolute; 
   bottom: 10px; 
@@ -1229,4 +1190,60 @@ div.reviewMovieTitleContainer {
 div.reviewerContainer {
  margin-left: 200px;
  margin-top: 42px;
+}
+
+.joinRequestContainer {
+  margin-left: 2%;
+  padding: 1%;
+  border-radius: 3%;
+  max-width: 300px;
+}
+
+.acceptRequestsGroupContainer {
+  margin-bottom: 1.5%;
+  padding: 1%;
+  background-color: #180f41;
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+}
+
+.acceptJoinRequestGroupName {
+  font-weight: bold;
+  margin-bottom: 1%;
+  border-radius: 5px;
+}
+
+.acceptUserToGroupContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 2%;
+  background-color: #3f0f41;
+  padding-left: 2%;
+}
+
+.joinRequestButtonContainer {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: flex-start;
+  border-radius: 5px;
+  gap: 10px;
+}
+
+.acceptUserToGroup, .denyUserToGroup {
+  padding: 1% 2%;
+  border-radius: 0.3em;
+  margin-right: 15px;
+}
+
+.acceptUserToGroup {
+  background-color: #4cd622;
+  color: rgb(2, 0, 0);  
+}
+
+.denyUserToGroup {
+  background-color: #f44336;
+  color: white;
 }

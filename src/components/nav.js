@@ -12,10 +12,13 @@ export default function NavigationBar({ isAuthenticated, setIsAuthenticated }) {
   const [username, setUsername] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3001/user/getUsername/?token=' + jwtToken.value)
+    if(jwtToken.value !== '' && jwtToken.value != 'undefined'){
+      fetch('http://localhost:3001/user/getUsername/?token=' + jwtToken.value)
       .then(response => response.json())
       .then(data => setUsername(data.username))
       .catch(error => console.error('Error fetching groups:', error));
+    }
+    
 
   }, []);
 
@@ -23,7 +26,7 @@ export default function NavigationBar({ isAuthenticated, setIsAuthenticated }) {
     <div className="navigation-bar">
       <div className="nav-links">
         <Link to="/">Etusivu</Link>
-        <Link to="/movies">Elokuvat</Link>
+        <Link to="/search">Elokuvat</Link>
         <Link to="/teathers">Teatterit</Link>
         <Link to="/groups">Ryhmät</Link>
         <Link to="/reviews">Arvostelut</Link>

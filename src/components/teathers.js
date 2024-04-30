@@ -124,11 +124,17 @@ function Theaters() {
 
   function addShowToGroupList (group, theater, show, movie, movieid, poster) {
     console.log(group, theater, show, movie, movieid, poster);
+  
+      let newDate = new Date();
+      let year = newDate.getFullYear();
+      let month = newDate.getMonth() + 1;
+      let d = newDate.getDate();
+      let showTime = d +'.'+ month + '.' + year + ' klo: ' + show;
 
     const data = {
       group: group,
       theater: theater,
-      showtime: show,
+      showtime: showTime,
       moviename: movie,
       movieid: movieid,
       poster: poster
