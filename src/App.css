@@ -950,7 +950,7 @@ body {
   background-color: rgb(176, 81, 189); 
 }
 
-.movieFormContainer {
+.favoriteMovieListContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -1247,6 +1247,24 @@ div.reviewerContainer {
   color: white;
 }
 
+.movieFormContainer {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.shareOptionsContainer {
+  border: 1px solid #ffffff;
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #3f0f41;
+  height: 20px;
+}
+
+.shareOptionsContainer a {
+  font-weight: bold;
 
 /*LEFFA ARVOSTELU LAATIKKO*/
 .ReturnToSearchResults {
