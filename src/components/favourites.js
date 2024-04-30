@@ -4,6 +4,7 @@ import { jwtToken } from './authSignals';
 export default function Favorites() {
 
   const [favorites, setFavorites] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     fetch('http://localhost:3001/favorites/' + jwtToken.value)
@@ -11,6 +12,11 @@ export default function Favorites() {
       .then(data => setFavorites(data))
       .catch(error => console.error('Error fetching favorites:', error));
 
+      if (jwtToken.value) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
   }, []);
 
   const deleteFavorites = (movieid) => {
@@ -32,19 +38,42 @@ export default function Favorites() {
         .catch(error => console.error('Virhe lisättäessä suosikkiin:', error));
   };
 
+  const [userid, setUserId] = useState('');
+
+  useEffect(()=>{
+    fetch('http://localhost:3001/user/getUserId?token=' + jwtToken.value)
+    .then(response=>response.json())
+    .then(data=>
+      {
+        if(data.iduser){
+          setUserId(data.iduser);
+        }else{
+          console.log(data);
+        }
+      })
+    .catch(error=>console.error(error));
+  }, []);
+
   return (
     <div className='movieFormContainer'>
-      {favorites.map((movie, i) =>
+      {isLoggedIn && (
+        <div className="shareOptionsContainer">
+          Jaa suosikkilistasi tällä linkillä: http://localhost:3000/movies/?list={userid}
+        </div>
+      )}<div className='favoriteMovieListContainer'>
+
+      {favorites.map((movie, i) => (
         <div className='movie-itemss' key={`movieItem${i}`}>
           <img src={movie.poster} alt={`Elokuvan ${movie.moviename} kuva`} height={150} key={`poster${i}`} />
           <div className='movieMovieTitleContainer' key={`movieMovieTitleContainer${i}`}>
             <div className='movieMovieTitle' key={`movieMovieTitle${i}`}>{movie.moviename}</div>
-            </div>
-                <div id={`deleteFavoritesButtonContainer_${movie.idmovie}`}>
-                    <button className="deleteFavoritesButton" onClick={() => deleteFavorites(movie.idmovie)}>Poista suosikki</button>
-                </div>
-            </div>
-        )}
+          </div>
+          <div id={`deleteFavoritesButtonContainer_${movie.idmovie}`}>
+            <button className="deleteFavoritesButton" onClick={() => deleteFavorites(movie.idmovie)}>Poista suosikki</button>
+          </div>
+        </div>
+      ))}
     </div>
-)
+    </div>
+  );
 }
