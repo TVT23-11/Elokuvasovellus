@@ -1132,65 +1132,78 @@ body {
 }
 
 /* ARVOSTELUT VÄLILEHTI */
-
 .review-item {
   text-align: left;
   margin-top: 20px;
-  margin-bottom: 20px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #550343; 
   overflow: hidden;
   white-space: nowrap;  
+  max-width: 600px;
+  max-height: 322px;
+  margin: 20px auto;
 }
 
-.review-item img {
-  max-width: 200px;
+.reviewPoster {
+  max-width: 150px;
   height: auto;
   float: left;
 }
-div.reviewMovieTitleContainer.review-item {
-  position: right;
-  margin-left: 200px;
-  height: 40px;
-  width: 50px;
-  
-}
 
-  div.reviewStarsContainer{
-    font-size: 40%;
-    width: 500px;
-    margin-left: px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    border-radius: 10px;
+.reviewStarsContainer{
+    width: auto;
+    margin-top: 10px;
+    height: auto;
+    float: left;
+    
     img {
     width: 30px;
     }
 }
-div.reviewText{
-  margin-left: 250px; 
-  margin-top: 30px;
-  margin-bottom: 20px;
+.reviewText{
+  margin: 0 auto;
+  width: 60%;
+  max-width: 600px;
+  max-height: 200px ;
+  padding: 10px; 
+  border: 2px solid rgb(221, 152, 238);
+  border-radius: 5px;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: pre-line; 
+  word-wrap: break-word; 
+  overflow-y: auto !important;
+  
   }
 
-div.reviewMovieTitleContainer {
- position: right;
- height: 40px;
- width: 50px;
- margin-bottom: 5px;
- margin-left: 300px;
- padding: 3px;
+.reviewMovieTitleContainer {
+ margin: 10px auto 0 150px;
+ padding: 10px; 
+ text-align: center;
+
+}
+
+.reviewerContainer {
+ width: auto;
  height: auto;
-
+ text-align: right;
+ margin-left: 150px;
+ margin-top: 10px;
+ font-family: Apple Chancery, cursive;
+ font-size: 0.9em;
+ font-weight: bold;
 }
 
-div.reviewerContainer {
- margin-left: 200px;
- margin-top: 42px;
-}
 
+
+
+
+
+
+
+/*GROUP MANAGEMENT*/
 .joinRequestContainer {
   margin-left: 2%;
   padding: 1%;

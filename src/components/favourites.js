@@ -41,7 +41,7 @@ export default function Favorites() {
             <div className='movieMovieTitle' key={`movieMovieTitle${i}`}>{movie.moviename}</div>
             </div>
                 <div id={`deleteFavoritesButtonContainer_${movie.idmovie}`}>
-                    <button className="deleteFavoritesButton" onClick={() => deleteFavorites(movie.idmovie)}>Poista suosikki</button>
+                    <button className="deleteFavoritesButton searchPageButton" onClick={() => deleteFavorites(movie.idmovie)}>Poista suosikki</button>
                 </div>
             </div>
         )}
