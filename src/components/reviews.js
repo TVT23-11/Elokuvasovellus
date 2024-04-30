@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom' 
 
 export default function Review() {
 
@@ -18,7 +19,11 @@ export default function Review() {
         <div className='review-item' key={`reviewItem${i}`}>
           <img src={review.poster} alt={`Elokuvan ${review.moviename} kuva`} height={150} key={`poster${i}`} className='reviewPoster'/>
           <div className='reviewMovieTitleContainer'  key={`reviewMovieTitleContainer${i}`}>
-            <div className='reviewMovieTitle' key={`reviewMovieTitle${i}`}>{review.moviename}</div>
+            <div className='reviewMovieTitle' key={`reviewMovieTitle${i}`}>
+              <Link to={`https://www.themoviedb.org/movie/${review.idmovie}`} className='link'>
+                {review.moviename}
+              </Link>
+            </div>
             <div className='reviewStarsContainer' key={`reviewStarsContainer${i}`}>
               {review.numberofstars > 0 ? (
               <img src={'/img/star_full.png'} className='reviewStarImage' />
