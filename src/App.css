@@ -1170,3 +1170,63 @@ body {
 .groupMemberListItem button:hover {
   background-color: #b71c1c;
 }
+
+/* ARVOSTELUT VÄLILEHTI */
+
+.review-item {
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #550343; 
+  overflow: hidden;
+  white-space: nowrap;  
+}
+
+.review-item img {
+  max-width: 200px;
+  height: auto;
+  float: left;
+}
+div.reviewMovieTitleContainer.review-item {
+  position: right;
+  margin-left: 200px;
+  height: 40px;
+  width: 50px;
+  
+}
+
+  div.reviewStarsContainer{
+    font-size: 40%;
+    width: 500px;
+    margin-left: px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    img {
+    width: 30px;
+    }
+}
+div.reviewText{
+  margin-left: 250px; 
+  margin-top: 30px;
+  margin-bottom: 20px;
+  }
+
+div.reviewMovieTitleContainer {
+ position: right;
+ height: 40px;
+ width: 50px;
+ margin-bottom: 5px;
+ margin-left: 300px;
+ padding: 3px;
+ height: auto;
+
+}
+
+div.reviewerContainer {
+ margin-left: 200px;
+ margin-top: 42px;
+}
