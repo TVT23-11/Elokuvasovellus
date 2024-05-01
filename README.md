@@ -77,3 +77,5 @@ Linkki palvelimelle, jossa sovellus ajossa.
  
 
 Sovelluksen esittely kuvin + tekstein tai videolla:  
+
+[API-dokumentaatio](https://documenter.getpostman.com/view/30128179/2sA3JDi6HT)
