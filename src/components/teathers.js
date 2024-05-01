@@ -32,7 +32,7 @@ function Theaters() {
           id: theater.querySelector('ID').textContent,
           name: theater.querySelector('Name').textContent
         }))
-        .filter(theater => theater.id !== '1014' && theater.id !== '1012' && theater.id !== '1002' && theater.id !== '1021'); // Suodatetaan tietyt teatterit pois
+        .filter(theater => theater.id !== '1014' && theater.id !== '1012' && theater.id !== '1002' && theater.id !== '1021' && theater.id !== '1029'); // Suodatetaan tietyt teatterit pois
         setTheaters(theaterList);
       } catch (error) {
         console.error('Hupsis:', error);
