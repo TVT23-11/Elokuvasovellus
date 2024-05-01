@@ -1147,7 +1147,7 @@ body {
 }
 
 .reviewPoster {
-  max-width: 150px;
+  max-width: 20%;
   height: auto;
   float: left;
 }
@@ -1156,16 +1156,16 @@ body {
     width: auto;
     margin-top: 10px;
     height: auto;
-    float: left;
-    
-    img {
-    width: 30px;
-    }
+    float: left;   
+}
+
+.reviewStarsContainer img {
+  width: 15%; 
+  max-width: 30px; 
 }
 .reviewText{
   margin: 0 auto;
   width: 60%;
-  max-width: 600px;
   max-height: 200px ;
   padding: 10px; 
   border: 2px solid rgb(221, 152, 238);
@@ -1179,7 +1179,7 @@ body {
   }
 
 .reviewMovieTitleContainer {
- margin: 10px auto 0 150px;
+ margin: 10px auto 0;
  padding: 10px; 
  text-align: center;
 
@@ -1279,6 +1279,7 @@ body {
 .shareOptionsContainer a {
   font-weight: bold;
 }
+
 /*LEFFA ARVOSTELU LAATIKKO*/
 .ReturnToSearchResults {
   background-color: rgb(221, 152, 238);
