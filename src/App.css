@@ -23,19 +23,16 @@ body {
   margin-top: 20px;
   text-align: center;
   font-family: Helvetica, sans-serif;
-  
 }
 
 /* ETUSIVUN MAINOSLAATIKKO*/
-
 .welcome-message-container {
   max-width: 100%;
   margin: 50px auto 20px; 
   padding: 20px;
   border: 1px solid #ffffff;
   text-align: center; 
-  background-color: #550343;  
-  
+  background-color: #550343;   
 }
 
 .welcome-heading {
@@ -65,9 +62,9 @@ body {
 }
 
 .container-wrapper {
-  display: flex; /* Lisää display: flex */
-  justify-content: center; /* Keskitä containerit vaakasuunnassa */
-  gap: 20px; /* Lisää tilaa containerien välille */
+  display: flex; 
+  justify-content: center; 
+  gap: 20px; 
   margin-top: 30px;
 }
 
@@ -76,9 +73,11 @@ body {
   color: #ffffff;
   text-align: center;
 }
+
 .ad-container {
   margin-bottom: 30px; 
 }
+
 .ad-item,
 .event-item {
   max-width: 100%; 
@@ -119,7 +118,6 @@ body {
   border-radius: 5px;
   width: 160px;
   height: 50px;
-
 }
 
 .dropdown-content {
@@ -154,6 +152,7 @@ body {
 .dropdown:hover .dropbtn {
   background-color: rgb(176, 81, 189);
 }
+
 .logout-button {
   color: black;
   font-size: 16px;
@@ -165,21 +164,19 @@ body {
   margin-left: 15px;
   border-radius: 5px;
   background-color: rgb(221, 152, 238);
-  
 }
+
 .logout-button:hover{
   background-color: rgb(176, 81, 189);
-
 }
-
 
 /* LOGIN BUTTON*/
 .login-button{
   position: absolute; 
   top: 15px;
   right: 10px;
-
 }
+
 /* NAVIGATION-BAR TÄSTÄ*/
 .navigation-bar {
   text-align: center;
@@ -215,7 +212,6 @@ body {
 
 .navigation-bar a:hover {
   background-color: rgb(176, 81, 189);
-  
 }
 
 /* HAKU LAATIKKO TÄSTÄ*/
@@ -224,10 +220,12 @@ body {
   justify-content: center;
   margin-top: 20px;
 }
+
 .search-container form {
   display: flex;
   align-items: center;
 }
+
 @media screen and (max-width: 600px) {
 .search-container input[type="text"] {
   padding: 10px;
@@ -236,8 +234,9 @@ body {
   width: 200px;
   max-width: 200px;
   width: calc(100% - 80px);
+  }
 }
-}
+
 .search-container button {
   padding: 10px 20px;
   border-radius: 5px;
@@ -252,8 +251,7 @@ body {
   background-color: rgb(176, 81, 189);
 }
 
-/* MOVIE VÄLILEHDEN HOMMELIT*/
-
+/* MOVIE VÄLILEHTI*/
 .movie-container {
   text-align: center;
 }
@@ -329,12 +327,10 @@ body {
 }
 
 /* GROUP VÄLILEHDEN RYHMÄT*/
-
 .groups-container {
   margin: 20px auto;
   max-width: 800px;
   max-height: 800px;
- 
 }
 
 .group-content {
@@ -350,7 +346,6 @@ body {
   color: #ffffff;
 }
 
-
 .group-description {
   margin-top: 25px;
   margin-bottom: 30px;
@@ -365,7 +360,6 @@ body {
   max-height: 100px;
   max-width: 90%;
 }
-
 
 .group {
   border: 1px solid #ccc;
@@ -414,20 +408,18 @@ body {
   color: #4eda2c;
   margin-top: 10px; 
   font-size: 12px;
-}
+  }
 }
 
 /*REPONSIIVISUUS:*/
 /*1200-800px NÄYTTÖ:*/
 @media screen and (max-width: 1200px){
   body {
-
     font-size: 1em;
     padding: 20px;
     margin: 20px;
 
     .App-header {
-
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -453,7 +445,6 @@ body {
     }
    }
     
-
   /*800px TAI SITÄ PIENEMPI NÄYTTÖ*/
 @media screen and (max-width: 800px){
   body {
@@ -500,14 +491,11 @@ body {
       margin: 10px;
       padding: 10px 3px; 
       width: 120px; 
-      border-width: 3px;
-        
+      border-width: 3px;   
     }
-
 }
 
 /* MOVIES VÄLILEHDEN SUODATUS VALIKKO*/
-
 .filter-container {
   position: relative;
   display: inline-block;
@@ -594,9 +582,9 @@ body {
 }
 
 .showtimes h3::before {
-  content: "\2605"; /* Käytetään Unicode-tähti-symbolia (★) */
-  color: #fff; /* Määritetään tähtisymbolin väri */
-  margin-right: 5px; /* Lisätään väliä tähtisymbolin ja tekstisisällön välille */
+  content: "\2605"; 
+  color: #fff; 
+  margin-right: 5px; 
 }
 
 /* TEATTERI DRIOP DOWN */
@@ -652,6 +640,7 @@ body {
 .custom-dropdown:hover .custom-dropdown-btn {
   background-color: rgb(176, 81, 189);
 }
+
 /*VALITUN TEATTERIN NÄYTTÖ */
 @keyframes carousel {
   0% { transform: translateX(100%); }
@@ -743,7 +732,6 @@ body {
 }
 
 /* REGISTER SIVUSTO */
-
 .registerFormContainer {
   width: 70%; 
   height: auto; 
@@ -814,7 +802,6 @@ body {
 }
 
 /* PROFIILIN HALLINTA */
-
 .profile-management {
   display: flex;
   flex-direction: column; 
@@ -880,9 +867,7 @@ body {
   background-color: rgb(176, 81, 189);
 }
 
-
 /* GROUP MANAGEMENT SIVUSTO*/
-
 .groupManagementContainer {
   margin-bottom: 20px;
 }
@@ -970,6 +955,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #3f0f41;
+  width: 200px;
   text-align: center;
 }
 
@@ -1063,7 +1049,6 @@ body {
 }
 
 /* RYHMÄN OMA SIVU*/
-
 .groupPageContainer {
   margin: 20px;
   padding: 20px;
@@ -1161,16 +1146,17 @@ body {
 }
 
 .reviewStarsContainer{
-    width: auto;
-    margin-top: 10px;
-    height: auto;
-    float: left;   
+  width: auto;
+  margin-top: 10px;
+  height: auto;
+  float: left;   
 }
 
 .reviewStarsContainer img {
   width: 15%; 
   max-width: 30px; 
 }
+
 .reviewText{
   margin: 0 auto;
   width: 60%;
@@ -1183,33 +1169,25 @@ body {
   white-space: pre-line; 
   word-wrap: break-word; 
   overflow-y: auto !important;
-  
   }
 
 .reviewMovieTitleContainer {
- margin: 10px auto 0;
- padding: 10px; 
- text-align: center;
+  margin: 10px auto 0;
+  padding: 10px; 
+  text-align: center;
 
 }
 
 .reviewerContainer {
- width: auto;
- height: auto;
- text-align: right;
- margin-left: 150px;
- margin-top: 10px;
- font-family: Apple Chancery, cursive;
- font-size: 0.9em;
- font-weight: bold;
+  width: auto;
+  height: auto;
+  text-align: right;
+  margin-left: 150px;
+  margin-top: 10px;
+  font-family: Apple Chancery, cursive;
+  font-size: 0.9em;
+  font-weight: bold;
 }
-
-
-
-
-
-
-
 
 /*GROUP MANAGEMENT*/
 .joinRequestContainer {
@@ -1270,7 +1248,7 @@ body {
 
 .movieFormContainer {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 10px; 
 }
 
 .shareOptionsContainer {
@@ -1297,8 +1275,7 @@ body {
   border-radius: 5px; 
   cursor: pointer; 
   margin-left: 20px;
-  margin-top: 10px;
-  
+  margin-top: 10px;  
 }
 
 .searchReviewFormContainer {
@@ -1312,6 +1289,7 @@ body {
   max-width: 600px;
   margin: 20px auto;
 }
+
 .searchReviewMovieTitle {
   font-size: 24px; 
   font-weight: bold; 
@@ -1356,5 +1334,5 @@ body {
 }
 
 .searchSaveReview:hover {
-  background-color: #005f6b; 
+  background-color: rgb(176, 81, 189);  
 }

@@ -21,7 +21,7 @@ useEffect(()=>{
 }, []);
 
   return (
-    <div className='movieFormContainer'>
+    <div className='favoriteMovieListContainer'>
     {favorites.map((movie, i) => (
       <div className='movie-itemss' key={`movieItem${i}`}>
         <img src={movie.poster} alt={`Elokuvan ${movie.moviename} kuva`} height={150} key={`poster${i}`} />
