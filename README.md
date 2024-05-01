@@ -52,18 +52,20 @@ Kuva 1 .
 Kuvissa 2, 3 ja 4 esitellään sovelluksen käyttöliittymän suunnitelmaa. 
 
 
- ![etusivu](https://github.com/TVT23-11/Elokuvasovellus/assets/129080102/0f3dd7ae-dedc-43e7-a474-3e4fe6cb0243)
+![etusiwu](https://github.com/TVT23-11/Elokuvasovellus/assets/129080102/f5effc95-42f9-4845-b42e-e2faf0b42aca)
+
 
 
 Kuva 2. Käyttöliittymän etusivu. 
 
 
-![ryhmat](https://github.com/TVT23-11/Elokuvasovellus/assets/129080102/0d24722f-e2e4-4aa7-a346-ca5e46976824)
+![ryhmat1](https://github.com/TVT23-11/Elokuvasovellus/assets/129080102/38b6aa62-38a7-452d-9fdb-ce77098ee701)
+
 
 
 Kuva 3. Käyttöliittymän ryhmienhallinta -sivu.
 
-![teatterit](https://github.com/TVT23-11/Elokuvasovellus/assets/129080102/f13cb2be-d0ff-4256-980c-42c45f133605)
+![teatterioik](https://github.com/TVT23-11/Elokuvasovellus/assets/129080102/ae2d02d7-835a-4908-9322-5cf7034ea3a6)
 
 Kuva 4. Käyttöliittymän teatterinäytöksen valinta – sivu. 
 
@@ -71,7 +73,6 @@ Kuva 4. Käyttöliittymän teatterinäytöksen valinta – sivu.
 
 Linkki palvelimelle, jossa sovellus ajossa.  
 
- 
 
  
 
