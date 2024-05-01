@@ -771,6 +771,14 @@ body {
   border-radius: 5px; 
 }
 
+#registerFormInfo {
+  text-align: center; 
+}
+
+#registerFormInfo h2 {
+  font-size: 24px;
+}
+
 .validationStatus {
   margin-left: 20px; 
   font-size: 12px; 
