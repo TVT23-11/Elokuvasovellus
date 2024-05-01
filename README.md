@@ -71,7 +71,7 @@ Kuva 4. Käyttöliittymän teatterinäytöksen valinta – sivu.
 
  
 
-Linkki palvelimelle, jossa sovellus ajossa.  
+[Linkki palvelimelle, jossa sovellus ajossa](https://elokuvasovellusserver.onrender.com)
 
 
  
